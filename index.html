@@ -4,19 +4,201 @@
     <meta charset="utf-8">
     <title>360&deg; Image</title>
     <meta name="description" content="360&deg; Image - A-Frame">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@500&display=swap" rel="stylesheet">
     <script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
-    <script src="video.js"></script>
     <script src="https://unpkg.com/aframe-event-set-component@5/dist/aframe-event-set-component.min.js"></script>
     <script src="https://unpkg.com/aframe-layout-component@5.3.0/dist/aframe-layout-component.min.js"></script>
     <script src="https://unpkg.com/aframe-template-component@3.2.1/dist/aframe-template-component.min.js"></script>
     <script src="https://unpkg.com/aframe-proxy-event-component@2.1.0/dist/aframe-proxy-event-component.min.js"></script>
+    <script src="https://unpkg.com/aframe-lerp-component/dist/aframe-lerp-component.min.js"></script>
+    <!-- <script src="cubemap-static.js"></script>
+    <script src="debug-text.js"></script>
+    <script src="portal-components.js"></script> -->
+    <script src="hider-material.js"></script>
+    <link rel="stylesheet" href="main.css">
   </head>
   <body>
-    <video id="video" width="640" height="480" autoplay></video>
-    <button id="snap">Snap Photo</button>
-    <canvas id="canvas" width="640" height="480"></canvas>
-    <a-scene>
-      <!-- <a-sky src="assets/tahoe-Resized.jpg" rotation="0 0 0"></a-sky> -->
+    <div class="overlay">
+      <div id="intro-top">
+        <!--<div id="intro-pre-text">an AR experience by</div>-->
+        <!-- <div id="intro-logo"><img id="logo" src="./assets/images/studio-kohler-logo-temp.png"></div> -->
+      </div>
+      <div  id="debug-text">Init text</div>
+    </div>
+    <!--<div id="recenter">recenter origin</div>-->
+
+    <a-scene
+      stats>
+
+      <!-- We can define assets here to be loaded when A-Frame initializes -->
+      <a-assets>
+        <!-- Credit to Poly by Google for the model: https://poly.google.com/view/0fVRHo65E-j -->
+        <!--<a-asset-item id="ballModel" src="assets/jini-ball.glb"></a-asset-item>-->
+        <a-asset-item id="mainSculpture1" src="assets/glbs/Sculptures.glb"></a-asset-item>
+        <a-asset-item id="brassModel" src="assets/glbs/brushedbrass.glb"></a-asset-item>
+        <a-asset-item id="nickelModel" src="assets/glbs/brushednickel.glb"></a-asset-item>
+        <a-asset-item id="chromeModel" src="assets/glbs/chrome.glb"></a-asset-item>
+        <a-asset-item id="glassModel" src="assets/glbs/frostedglass.glb"></a-asset-item>
+        <a-asset-item id="matteModel" src="assets/glbs/matteblack.glb"></a-asset-item>
+        <a-asset-item id="baseModel" src="assets/glbs/base.glb"></a-asset-item>
+        <!--<img id="pines" src="./assets/misty-pines.jpg">-->
+        <!--<img id="pines" src="./assets/misty-pines.jpg">-->
+        <img id="tahoe" src="./assets/hdris/tahoe-Resized.jpg">
+        <!--<img id="posx" src="./assets/cubemap/posx.png">-->
+        <!--<img id="posy" src="./assets/cubemap/posy.png">-->
+        <!--<img id="posz" src="./assets/cubemap/posz.png">-->
+        <!--<img id="negx" src="./assets/cubemap/negx.png">-->
+        <!--<img id="negy" src="./assets/cubemap/negy.png">-->
+        <!--<img id="negz" src="./assets/cubemap/negz.png">-->
+        <img id="posx" src="./assets/cubemap/px.png">
+        <img id="posy" src="./assets/cubemap/py.png">
+        <img id="posz" src="./assets/cubemap/pz.png">
+        <img id="negx" src="./assets/cubemap/nx.png">
+        <img id="negy" src="./assets/cubemap/ny.png">
+        <img id="negz" src="./assets/cubemap/nz.png">
+      </a-assets>
+
+      <a-camera id="camera" position="0 4 8" animation="property: position; to: 0 4 0; easing: easeInOutQuad; loop: false; dur: 2000">
+        <!-- <a-animation attribute="position"
+                 dur="2000"
+                 easing="linear"
+                 to="0 4 0">
+               </a-animation> -->
+      </a-camera>
+
+      <!-- Doorway -->
+      <!--<a-box  scale="1 6 1" position="-2.5 3 0" color="#8083A2"></a-box>-->
+      <!--<a-box scale="1 6 1" position="2.5 3 0" color="#8083A2"></a-box>-->
+      <!--<a-box  scale="6 1 1" position="0 6.5 0" color="#8083A2"></a-box>-->
+
+      <a-entity id="all-content" position="0 -3 0">
+
+      <!-- Hider walls -->
+        <a-entity id="hider-walls">
+          <!-- front-top-->
+          <a-box scale="6 100 1" position="0 60 0"  hider-material></a-box>
+          <!-- left-->
+          <a-box scale="94 100 1" position="-50 50 0" hider-material></a-box>
+          <!--<a-box scale="94 100 1" rotate="0 180 0" position="-50 50 0" hider-material></a-box>-->
+          <!-- right-->
+          <a-box scale="94 100 1" position="50 50 0" hider-material></a-box>
+          <!-- behind-->
+          <a-box scale="200 100 1" position="0 50 200" hider-material></a-box>
+          <!-- proper-top-->
+          <a-box scale="200 1 201" position="0 100 100" hider-material></a-box>
+          <!-- proper-bottom-->
+          <a-box scale="200 1 201" position="0 -0.5 100" hider-material></a-box>
+          <a-box scale="1 100 200" position="-100 50 100" hider-material></a-box>
+          <a-box scale="1 100 200" position="100 50 100" hider-material></a-box>
+        </a-entity>
+
+        <a-entity id="portal-wall">
+          <a-plane scale="4 6 1" rotation="180 0 0" position="0 3 0.5" hider-material></a-plane>
+        </a-entity>
+
+        <a-entity
+          light="
+            type: directional;
+            intensity: 0.8;
+            castShadow: true;
+            shadowMapHeight:2048;
+            shadowMapWidth:2048;
+            shadowCameraTop: 10;
+            target: #ball;"
+          position="1 4.3 2.5"
+          xrextras-attach="target: ball; offset: 0 15 0;"
+          shadow>
+        </a-entity>
+        <a-entity light="type: ambient; intensity: 1;"></a-entity>
+
+        <a-entity id="portal-contents" position="0 0 0">
+
+          <a-entity
+            id="main1"
+            scale="50 50 50"
+            rotation="0 1 0"
+            position="0 0 -10"
+            gltf-model="#mainSculpture1"
+            cubemap-static
+            shadow>
+          </a-entity>
+          <a-entity
+            id="base"
+            scale="0.3 0.3 0.3"
+            rotation="0 -90 0"
+            position="0 0 -14.65"
+            gltf-model="#baseModel"
+            cubemap-static>
+          </a-entity>
+
+          <!--<a-entity-->
+          <!--  id="nickel"-->
+          <!--  scale="0.3 0.3 0.3"-->
+          <!--  rotation="0 -90 0"-->
+          <!--  position="100 1.5 -7"-->
+          <!--  gltf-model="#nickelModel"-->
+          <!--  cubemap-static-->
+          <!--  bob-->
+          <!--  shadow>-->
+          <!--</a-entity>-->
+          <!--<a-entity-->
+          <!--  id="brass"-->
+          <!--  scale="0.3 0.3 0.3"-->
+          <!--  rotation="0 -90 0"-->
+          <!--  position="100 1.5 -7"-->
+          <!--  gltf-model="#brassModel"-->
+          <!--  cubemap-static-->
+          <!--  bob-->
+          <!--  shadow>-->
+          <!--</a-entity>-->
+          <!--<a-entity-->
+          <!--  id="chrome"-->
+          <!--  scale="0.3 0.3 0.3"-->
+          <!--  rotation="0 -90 0"-->
+          <!--  position="100 1.5 -7"-->
+          <!--  gltf-model="#chromeModel"-->
+          <!--  cubemap-static-->
+          <!--  bob-->
+          <!--  shadow>-->
+          <!--</a-entity>-->
+          <!--<a-entity-->
+          <!--  id="matte"-->
+          <!--  scale="0.3 0.3 0.3"-->
+          <!--  rotation="0 -90 0"-->
+          <!--  position="100 1.5 -7"-->
+          <!--  gltf-model="#matteModel"-->
+          <!--  cubemap-static-->
+          <!--  bob-->
+          <!--  shadow>-->
+          <!--</a-entity>-->
+          <!--<a-entity-->
+          <!--  id="glass"-->
+          <!--  scale="0.3 0.3 0.3"-->
+          <!--  rotation="0 -90 0"-->
+          <!--  position="100 1.5 -7"-->
+          <!--  gltf-model="#glassModel"-->
+          <!--  cubemap-static-->
+          <!--  bob-->
+          <!--  shadow>-->
+          <!--</a-entity>-->
+
+          <!--<a-entity-->
+          <!--  id="ball"-->
+          <!--  scale="5 5 5"-->
+          <!--  position="0 1.5 -7"-->
+          <!--  gltf-model="#ballModel"-->
+          <!--  cubemap-static-->
+          <!--  bob-->
+          <!--  shadow>-->
+          <!--</a-entity>-->
+
+
+          <a-sky src="#tahoe"></a-sky>
+          <!--<a-box scale="5 1 10" position="0 -0.5 -4.5" color="#8083A2" shadow></a-box>-->
+        </a-entity>
+      </a-entity>
+
     </a-scene>
   </body>
 </html>

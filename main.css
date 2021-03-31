@@ -1,0 +1,43 @@
+body{
+    background-color:black;
+  }
+  
+  .overlay{
+    color:white;
+    font-family: 'Roboto', sans-serif;
+  }
+  
+  img {
+    max-width: 100%;
+    max-height: 100%;
+  }
+  
+  #debug-text{
+    position: absolute;
+    width:100%;
+    z-index: 50;
+    bottom: 0vmax;
+    left: 0vmax;
+    padding:1vmax;
+    background:black;
+    color:white;
+  }
+  
+  #intro-top{
+    position: absolute;
+    width:100%;
+    z-index: 50;
+    top: 2vmax;
+    left: 0vmax;
+    display: flex;
+    justify-content: center;
+  }
+
+  
+  #intro-logo{
+    max-width:50%;
+    margin: 0 auto;
+    align-items: center;
+    justify-content: center;
+  }
+  
