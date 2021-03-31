@@ -12,7 +12,7 @@ AFRAME.registerComponent('hider-material', {
     let data = this.data;
     el.material = basicMaterial
     el.material.colorWrite = false;
-    // console.log(el.material) 
+    // console.log(el.material)
     // el.setAttribute('material', "shader: flat; color: red; opacity: 0.5")
   },
 });

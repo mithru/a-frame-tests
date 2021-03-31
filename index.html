@@ -13,8 +13,12 @@
     <script src="https://unpkg.com/aframe-proxy-event-component@2.1.0/dist/aframe-proxy-event-component.min.js"></script>
     <script src="https://unpkg.com/aframe-lerp-component/dist/aframe-lerp-component.min.js"></script>
     <!-- <script src="cubemap-static.js"></script>
-    <script src="debug-text.js"></script>
     <script src="portal-components.js"></script> -->
+    <script>
+      // import {cubeEnvMapComponent} from './cubemap-static'
+      // AFRAME.registerComponent('cubemap-static', cubeEnvMapComponent)
+    </script>
+    <script src="debug-text.js"></script>
     <script src="hider-material.js"></script>
     <link rel="stylesheet" href="main.css">
   </head>
@@ -29,7 +33,8 @@
     <!--<div id="recenter">recenter origin</div>-->
 
     <a-scene
-      stats>
+      stats
+      debug-this>
 
       <!-- We can define assets here to be loaded when A-Frame initializes -->
       <a-assets>
@@ -59,12 +64,7 @@
         <img id="negz" src="./assets/cubemap/nz.png">
       </a-assets>
 
-      <a-camera id="camera" position="0 4 8" animation="property: position; to: 0 4 0; easing: easeInOutQuad; loop: false; dur: 2000">
-        <!-- <a-animation attribute="position"
-                 dur="2000"
-                 easing="linear"
-                 to="0 4 0">
-               </a-animation> -->
+      <a-camera id="camera" position="0 4 8" animation="property: position; to: 0 4 -2; easing: easeInOutQuad; loop: false; dur: 2000">
       </a-camera>
 
       <!-- Doorway -->
@@ -73,7 +73,6 @@
       <!--<a-box  scale="6 1 1" position="0 6.5 0" color="#8083A2"></a-box>-->
 
       <a-entity id="all-content" position="0 -3 0">
-
       <!-- Hider walls -->
         <a-entity id="hider-walls">
           <!-- front-top-->
@@ -92,11 +91,9 @@
           <a-box scale="1 100 200" position="-100 50 100" hider-material></a-box>
           <a-box scale="1 100 200" position="100 50 100" hider-material></a-box>
         </a-entity>
-
         <a-entity id="portal-wall">
           <a-plane scale="4 6 1" rotation="180 0 0" position="0 3 0.5" hider-material></a-plane>
         </a-entity>
-
         <a-entity
           light="
             type: directional;
@@ -111,9 +108,7 @@
           shadow>
         </a-entity>
         <a-entity light="type: ambient; intensity: 1;"></a-entity>
-
         <a-entity id="portal-contents" position="0 0 0">
-
           <a-entity
             id="main1"
             scale="50 50 50"
@@ -131,69 +126,6 @@
             gltf-model="#baseModel"
             cubemap-static>
           </a-entity>
-
-          <!--<a-entity-->
-          <!--  id="nickel"-->
-          <!--  scale="0.3 0.3 0.3"-->
-          <!--  rotation="0 -90 0"-->
-          <!--  position="100 1.5 -7"-->
-          <!--  gltf-model="#nickelModel"-->
-          <!--  cubemap-static-->
-          <!--  bob-->
-          <!--  shadow>-->
-          <!--</a-entity>-->
-          <!--<a-entity-->
-          <!--  id="brass"-->
-          <!--  scale="0.3 0.3 0.3"-->
-          <!--  rotation="0 -90 0"-->
-          <!--  position="100 1.5 -7"-->
-          <!--  gltf-model="#brassModel"-->
-          <!--  cubemap-static-->
-          <!--  bob-->
-          <!--  shadow>-->
-          <!--</a-entity>-->
-          <!--<a-entity-->
-          <!--  id="chrome"-->
-          <!--  scale="0.3 0.3 0.3"-->
-          <!--  rotation="0 -90 0"-->
-          <!--  position="100 1.5 -7"-->
-          <!--  gltf-model="#chromeModel"-->
-          <!--  cubemap-static-->
-          <!--  bob-->
-          <!--  shadow>-->
-          <!--</a-entity>-->
-          <!--<a-entity-->
-          <!--  id="matte"-->
-          <!--  scale="0.3 0.3 0.3"-->
-          <!--  rotation="0 -90 0"-->
-          <!--  position="100 1.5 -7"-->
-          <!--  gltf-model="#matteModel"-->
-          <!--  cubemap-static-->
-          <!--  bob-->
-          <!--  shadow>-->
-          <!--</a-entity>-->
-          <!--<a-entity-->
-          <!--  id="glass"-->
-          <!--  scale="0.3 0.3 0.3"-->
-          <!--  rotation="0 -90 0"-->
-          <!--  position="100 1.5 -7"-->
-          <!--  gltf-model="#glassModel"-->
-          <!--  cubemap-static-->
-          <!--  bob-->
-          <!--  shadow>-->
-          <!--</a-entity>-->
-
-          <!--<a-entity-->
-          <!--  id="ball"-->
-          <!--  scale="5 5 5"-->
-          <!--  position="0 1.5 -7"-->
-          <!--  gltf-model="#ballModel"-->
-          <!--  cubemap-static-->
-          <!--  bob-->
-          <!--  shadow>-->
-          <!--</a-entity>-->
-
-
           <a-sky src="#tahoe"></a-sky>
           <!--<a-box scale="5 1 10" position="0 -0.5 -4.5" color="#8083A2" shadow></a-box>-->
         </a-entity>
