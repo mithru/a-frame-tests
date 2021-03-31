@@ -34,7 +34,8 @@
 
     <a-scene
       stats
-      debug-this>
+      debug-this
+      vr-mode-ui="enabled: false">
 
       <!-- We can define assets here to be loaded when A-Frame initializes -->
       <a-assets>
@@ -64,7 +65,7 @@
         <img id="negz" src="./assets/cubemap/nz.png">
       </a-assets>
 
-      <a-camera id="camera" position="0 4 8" animation="property: position; to: 0 4 -2; easing: easeInOutQuad; loop: false; dur: 2000">
+      <a-camera id="camera" position="0 4 8" animation="property: position; delay: 5000; to: 0 4 -2; easing: easeInOutQuad; loop: false; dur: 3000">
       </a-camera>
 
       <!-- Doorway -->
