@@ -2,6 +2,21 @@ body{
   background-color:black;
 }
 
+#container{
+    position: fixed;
+    width: 100%;
+    height: 100vh;
+    background-color: green;
+}
+
+#videoElement{
+  position: absolute;
+  left: 50%; /* % of surrounding element */
+  top: 50%;
+  transform: translate(-50%, -50%); /* % of current element */
+  width: 100%;
+  /* height: 100vh; */
+}
 
 .overlay{
   color:white;

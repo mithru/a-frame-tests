@@ -14,16 +14,15 @@
     <script src="https://unpkg.com/aframe-lerp-component/dist/aframe-lerp-component.min.js"></script>
     <!-- <script src="cubemap-static.js"></script>
     <script src="portal-components.js"></script> -->
-    <script src="video-feed.js"></script>
     <script src="cubemap-static.js"></script>
     <script src="debug-text.js"></script>
     <script src="hider-material.js"></script>
     <link rel="stylesheet" href="main.css">
   </head>
-  <body>
+  <body onload="start()">
     <div id="container">
       <video autoplay="true" id="videoElement"></video>
-    </div> 
+    </div>
     <div class="overlay">
       <div id="intro-top">
         <!--<div id="intro-pre-text">an AR experience by</div>-->
@@ -191,5 +190,23 @@
       </a-entity>
 
     </a-scene>
+    <!-- <script type="text/javascript">
+        //Selector for your <video> element
+        const video = document.querySelector('#videoElement');
+
+        //Core
+        window.navigator.mediaDevices.getUserMedia({ video: true })
+            .then(stream => {
+                video.srcObject = stream;
+                video.onloadedmetadata = (e) => {
+                    video.play();
+                };
+            })
+            .catch( () => {
+                alert('You have give browser the permission to run Webcam and mic ;( ');
+            });
+
+    </script> -->
+    <script src="video-feed.js"></script>
   </body>
 </html>
