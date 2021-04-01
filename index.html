@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <meta charset="utf-8"> 
+    <meta charset="utf-8">
     <title>360&deg; Image</title>
     <meta name="description" content="360&deg; Image - A-Frame">
     <link rel="preconnect" href="https://fonts.gstatic.com">
@@ -14,15 +14,16 @@
     <script src="https://unpkg.com/aframe-lerp-component/dist/aframe-lerp-component.min.js"></script>
     <!-- <script src="cubemap-static.js"></script>
     <script src="portal-components.js"></script> -->
-    <script>
-      // import {cubeEnvMapComponent} from './cubemap-static'
-      // AFRAME.registerComponent('cubemap-static', cubeEnvMapComponent)
-    </script>
+    <script src="video-feed.js"></script>
+    <script src="cubemap-static.js"></script>
     <script src="debug-text.js"></script>
     <script src="hider-material.js"></script>
     <link rel="stylesheet" href="main.css">
   </head>
   <body>
+    <div id="container">
+      <video autoplay="true" id="videoElement"></video>
+    </div>
     <div class="overlay">
       <div id="intro-top">
         <!--<div id="intro-pre-text">an AR experience by</div>-->
@@ -126,6 +127,63 @@
             position="0 0 -14.65"
             gltf-model="#baseModel"
             cubemap-static>
+          </a-entity>
+          <a-entity id="others" position="0 0 0" scale="1 1 1">
+
+            <a-entity
+              id="nickel"
+              scale="1 1 1"
+              rotation="0 -90 0"
+              position="-10 1.5 0"
+              gltf-model="#nickelModel"
+              cubemap-static
+              shadow>
+            </a-entity>
+            <a-entity
+              id="brass"
+              scale="1 1 1"
+              rotation="0 -90 0"
+              position="-5 1.5 -10"
+              gltf-model="#brassModel"
+              cubemap-static
+              shadow>
+            </a-entity>
+            <a-entity
+              id="chrome"
+              scale="1 1 1"
+              rotation="0 -90 0"
+              position="5 1.5 -10"
+              gltf-model="#chromeModel"
+              cubemap-static
+              shadow>
+            </a-entity>
+            <a-entity
+              id="matte"
+              scale="1 1 1"
+              rotation="0 -90 0"
+              position="0 1.5 -14"
+              gltf-model="#matteModel"
+              cubemap-static
+              shadow>
+            </a-entity>
+            <a-entity
+              id="glass"
+              scale="1 1 1"
+              rotation="0 -90 0"
+              position="10 1.5 0"
+              gltf-model="#glassModel"
+              cubemap-static
+              shadow>
+            </a-entity>
+            <!--<a-entity-->
+            <!--  id="ball"-->
+            <!--  scale="5 5 5"-->
+            <!--  position="0 1.5 -7"-->
+            <!--  gltf-model="#ballModel"-->
+            <!--  cubemap-static-->
+            <!--  bob-->
+            <!--  shadow>-->
+            <!--</a-entity>-->
           </a-entity>
           <a-sky src="#tahoe"></a-sky>
           <!--<a-box scale="5 1 10" position="0 -0.5 -4.5" color="#8083A2" shadow></a-box>-->
