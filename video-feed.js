@@ -3,7 +3,7 @@ function start(){
   console.log(video)
   if (navigator.mediaDevices.getUserMedia) {
     console.log(video)
-    navigator.mediaDevices.getUserMedia({ video: true })
+    navigator.mediaDevices.getUserMedia({ video: {videoConstraints.facingMode = 'environment'} })
       .then(function (stream) {
         video.srcObject = stream;
       })
