@@ -1,7 +1,7 @@
 <!DOCTYPE html>
-<html> 
+<html>
   <head>
-    <meta charset="utf-8"> 
+    <meta charset="utf-8">
     <title>360&deg; Image</title>
     <meta name="description" content="360&deg; Image - A-Frame">
     <link rel="preconnect" href="https://fonts.gstatic.com">
@@ -12,11 +12,11 @@
     <script src="https://unpkg.com/aframe-template-component@3.2.1/dist/aframe-template-component.min.js"></script>
     <script src="https://unpkg.com/aframe-proxy-event-component@2.1.0/dist/aframe-proxy-event-component.min.js"></script>
     <script src="https://unpkg.com/aframe-lerp-component/dist/aframe-lerp-component.min.js"></script>
-    <!-- <script src="cubemap-static.js"></script>
-    <script src="portal-components.js"></script> -->
+
     <script src="cubemap-static.js"></script>
     <script src="debug-text.js"></script>
     <script src="hider-material.js"></script>
+    <script src="item-hovered.js"></script>
     <link rel="stylesheet" href="main.css">
   </head>
   <body onload="start()">
@@ -30,16 +30,13 @@
       </div>
       <div  id="debug-text">Init text</div>
     </div>
-    <!--<div id="recenter">recenter origin</div>-->
-
     <a-scene
+      renderer="antialias: true; colorManagement: true; physicallyCorrectLights: true;"
       stats
       debug-this
       vr-mode-ui="enabled: false">
-
-      <!-- We can define assets here to be loaded when A-Frame initializes -->
+    <!-- We can define assets here to be loaded when A-Frame initializes -->
       <a-assets>
-        <!-- Credit to Poly by Google for the model: https://poly.google.com/view/0fVRHo65E-j -->
         <!--<a-asset-item id="ballModel" src="assets/jini-ball.glb"></a-asset-item>-->
         <a-asset-item id="mainSculpture1" src="assets/glbs/Sculptures.glb"></a-asset-item>
         <a-asset-item id="brassModel" src="assets/glbs/brushedbrass.glb"></a-asset-item>
@@ -48,8 +45,13 @@
         <a-asset-item id="glassModel" src="assets/glbs/frostedglass.glb"></a-asset-item>
         <a-asset-item id="matteModel" src="assets/glbs/matteblack.glb"></a-asset-item>
         <a-asset-item id="baseModel" src="assets/glbs/base.glb"></a-asset-item>
-        <!--<img id="pines" src="./assets/misty-pines.jpg">-->
-        <!--<img id="pines" src="./assets/misty-pines.jpg">-->
+        <a-asset-item id="configA-item1" src="assets/glbs/26299.glb"></a-asset-item>
+        <a-asset-item id="configA-item2" src="assets/glbs/26296.glb"></a-asset-item>
+        <a-asset-item id="configA-item3" src="assets/glbs/26284.glb"></a-asset-item>
+        <a-asset-item id="configA-item4" src="assets/glbs/26314.glb"></a-asset-item>
+        <a-asset-item id="configA-item5" src="assets/glbs/28213.glb"></a-asset-item>
+        <a-asset-item id="configA-item6" src="assets/glbs/28214.glb"></a-asset-item>
+
         <img id="tahoe" src="./assets/hdris/tahoe-Resized.jpg">
         <!--<img id="posx" src="./assets/cubemap/posx.png">-->
         <!--<img id="posy" src="./assets/cubemap/posy.png">-->
@@ -66,14 +68,10 @@
       </a-assets>
 
       <a-camera id="camera" position="0 4 8" animation="property: position; delay: 5000; to: 0 4 -2; easing: easeInOutQuad; loop: false; dur: 3000">
+        <a-cursor  material="color: black; shader: flat; opacity: 0.5"></a-cursor>
       </a-camera>
 
-      <!-- Doorway -->
-      <!--<a-box  scale="1 6 1" position="-2.5 3 0" color="#8083A2"></a-box>-->
-      <!--<a-box scale="1 6 1" position="2.5 3 0" color="#8083A2"></a-box>-->
-      <!--<a-box  scale="6 1 1" position="0 6.5 0" color="#8083A2"></a-box>-->
-
-      <a-entity id="all-content" position="0 -3 0">
+      <a-entity id="all-content" position="0 0 0">
       <!-- Hider walls -->
         <a-entity id="hider-walls">
           <!-- front-top-->
@@ -95,47 +93,89 @@
         <a-entity id="portal-wall">
           <a-plane scale="4 6 1" rotation="180 0 0" position="0 3 0.5" hider-material></a-plane>
         </a-entity>
-        <a-entity
+        <!-- <a-entity
           light="
             type: directional;
             intensity: 0.8;
             castShadow: true;
             shadowMapHeight:2048;
             shadowMapWidth:2048;
-            shadowCameraTop: 10;
-            target: #ball;"
+            shadowCameraTop: 10;"
           position="1 4.3 2.5"
-          xrextras-attach="target: ball; offset: 0 15 0;"
           shadow>
-        </a-entity>
+        </a-entity> -->
+
         <a-entity light="type: ambient; intensity: 1;"></a-entity>
         <a-entity id="portal-contents" position="0 0 0">
           <a-entity
             id="main1"
-            scale="50 50 50"
+            scale="0 0 0"
             rotation="0 1 0"
             position="0 0 -10"
-            gltf-model="#mainSculpture1"
-            cubemap-static
-            shadow>
+            gltf-model="#mainSculpture1">
           </a-entity>
-          <a-entity
+          <a-entity id="dashboard-content" position="0 0 0">
+            <a-entity
+              id="configA1"
+              scale="12 12 12"
+              gltf-model="#configA-item1"
+              cubemap-static
+              dashboard-item="rot: -140; y : 5"
+              >
+              <a-box depth="0.1" height="0.1" width="0.1"  material="opacity: 0.3"></a-box>
+            </a-entity>
+            <a-entity
+              id="configA2"
+              scale="8 8 8"
+              gltf-model="#configA-item2"
+              cubemap-static
+              dashboard-item="rot: -40;"
+              >
+              <a-box position="0 0.1 0" depth="0.3" height="0.6" width="0.6"  material="opacity: 0.3"></a-box>
+            </a-entity>
+            <a-entity
+              id="configA3"
+              scale="8 8 8"
+              gltf-model="#configA-item3"
+              cubemap-static
+              dashboard-item="rot: 40;"
+              >
+              <a-box position="0 0.1 0" depth="0.3" height="0.6" width="0.6"  material="opacity: 0.3"></a-box>
+            </a-entity>
+            <a-entity
+              id="configA4"
+              scale="8 8 8"
+              gltf-model="#configA-item4"
+              cubemap-static
+              dashboard-item="rot: 90;"
+              >
+              <a-box position="0 0.1 0" depth="0.3" height="0.6" width="0.6"  material="opacity: 0.3"></a-box>
+            </a-entity>
+            <a-entity
+              id="configA5"
+              scale="12 12 12"
+              gltf-model="#configA-item5"
+              cubemap-static
+              dashboard-item="rot: 140;"
+              >
+              <a-box position="0 0 0" depth="0.2" height="0.2" width="0.2"  material="opacity: 0.3"></a-box>
+            </a-entity>
+        </a-entity>
+
+          <!-- <a-entity
             id="base"
             scale="0.3 0.3 0.3"
             rotation="0 -90 0"
             position="0 0 -14.65"
-            gltf-model="#baseModel"
-            cubemap-static>
-          </a-entity>
-          <a-entity id="others" position="0 0 0" scale="1 1 1">
-
+            gltf-model="#baseModel">
+          </a-entity> -->
+          <!-- <a-entity id="others" position="0 0 0" scale="1 1 1">
             <a-entity
               id="nickel"
               scale="1 1 1"
               rotation="0 -90 0"
               position="-10 1.5 0"
               gltf-model="#nickelModel"
-              cubemap-static
               shadow>
             </a-entity>
             <a-entity
@@ -174,39 +214,12 @@
               cubemap-static
               shadow>
             </a-entity>
-            <!--<a-entity-->
-            <!--  id="ball"-->
-            <!--  scale="5 5 5"-->
-            <!--  position="0 1.5 -7"-->
-            <!--  gltf-model="#ballModel"-->
-            <!--  cubemap-static-->
-            <!--  bob-->
-            <!--  shadow>-->
-            <!--</a-entity>-->
-          </a-entity>
+          </a-entity> -->
           <a-sky src="#tahoe"></a-sky>
           <!--<a-box scale="5 1 10" position="0 -0.5 -4.5" color="#8083A2" shadow></a-box>-->
         </a-entity>
       </a-entity>
-
     </a-scene>
-    <!-- <script type="text/javascript">
-        //Selector for your <video> element
-        const video = document.querySelector('#videoElement');
-
-        //Core
-        window.navigator.mediaDevices.getUserMedia({ video: true })
-            .then(stream => {
-                video.srcObject = stream;
-                video.onloadedmetadata = (e) => {
-                    video.play();
-                };
-            })
-            .catch( () => {
-                alert('You have give browser the permission to run Webcam and mic ;( ');
-            });
-
-    </script> -->
     <script src="video-feed.js"></script>
   </body>
 </html>
