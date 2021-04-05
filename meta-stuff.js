@@ -33,6 +33,7 @@ AFRAME.registerComponent('meta-stuff', {
 
           this.allContent.object3D.visible = true
           this.doorplaceholder.object3D.visible = false
+          this.camera.object3D.rotation.y = 0;
           this.camera.setAttribute('animation' , 'property: position; delay: 3000; to: 0 4 -20; easing: easeInOutQuad; loop: false; dur: 3000')
           // this.cta.visible = true
           this.overlay.style.visibility = "hidden"
