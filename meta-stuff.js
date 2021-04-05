@@ -11,6 +11,7 @@ AFRAME.registerComponent('meta-stuff', {
       this.allContent = document.getElementById('all-content')
       this.parent = document.getElementById('parent')
       this.camParent = document.getElementById('cam-parent')
+      this.camFinal = document.getElementById('camFinalPos')
       this.doorplaceholder = document.getElementById('door-placeholder')
       this.cta = document.getElementById('intro-cta')
       this.overlay = document.getElementById('overlay')
@@ -31,7 +32,6 @@ AFRAME.registerComponent('meta-stuff', {
             easing: "ease-in-out",
             duration: 1000
           });
-
           this.allContent.object3D.visible = true
           this.doorplaceholder.object3D.visible = false
           this.camera.object3D.rotation.y -= this.camera.object3D.rotation.y;
@@ -46,9 +46,11 @@ AFRAME.registerComponent('meta-stuff', {
       }
       this.cta.addEventListener('click', this.startExperience)
       this.camera.addEventListener('animationcomplete', this.showPortalElements)
-
     },
     tick() {
+      console.log(this.camFinal.object3D.position)
+      this.debugTextElement.innerHTML = "" + (this.camFinal.object3D.position.x)
+
       if(!this.positionSet){
         this.parent.object3D.rotation.y = this.camera.object3D.rotation.y
       }
