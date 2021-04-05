@@ -24,7 +24,9 @@ AFRAME.registerComponent('meta-stuff', {
       this.overlay = document.getElementById('overlay')
       this.dashboardElements = document.getElementById('dashboard-content')
       this.camWorldPosition = new THREE.Vector3();
-
+      this.doorCollider = document.getElementById('door-container')
+      this.doorCollider.object3D.visible = false
+      console.log(this.doorCollider.object3D.visible);
       // this.hiderWalls.object3D.visible = false
       this.allContent.object3D.visible = false
       this.positionSet = false;
@@ -48,6 +50,7 @@ AFRAME.registerComponent('meta-stuff', {
           this.overlay.style.visibility = "hidden"
         }
       this.showPortalElements = () => {
+        this.doorCollider.object3D.visible = true
         this.dashboardElements.object3D.visible = true
         this.envWalls.object3D.visible = false;
         this.reverseWall.setAttribute('animation' , 'property: position; to: 0 0 10; easing: easeInOutQuad; loop: false; dur: 3000')

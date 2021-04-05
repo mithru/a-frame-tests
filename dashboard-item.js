@@ -19,10 +19,10 @@ AFRAME.registerComponent('dashboard-item', {
 
     el.setAttribute('rotation', '0 ' + (-1*(data.rot+90)) + ' 0');
     el.setAttribute('position', data.x +' ' + data.y + ' ' + data.z);
-    console.log(el.getAttribute('position'));
+    // console.log(el.getAttribute('position'));
     const startRot = el.getAttribute("rotation")
     const startScale = el.getAttribute("scale")
-    console.log(startRot)
+    // console.log(startRot)
     const startRotString = startRot.x + ' ' + startRot.y + ' ' + startRot.z
     const endRotString = startRot.x + ' ' + (startRot.y+360) + ' ' + startRot.z
 
@@ -47,13 +47,12 @@ AFRAME.registerComponent('dashboard-item', {
       // el.removeAttribute('animation__rotation')
       // el.setAttribute('animation__rotation', 'property: rotation; to: 0 360 0; easing: linear; delay: 30000; loop: true')
       // el.setAttribute('animation__reset', 'property: rotation; to: 0 0 0; easing: easeInOutSine; dur: 2000')
-
       // el.setAttribute('animation__rotation', 'property: rotation; to: 0 0 0; easing: easeInOutSine; dur: 1000')
     }
 
     this.resetRotation = () => {
       if(!interactable){
-        console.log("Resetting rotation")
+        // console.log("Resetting rotation")
         el.setAttribute('animation' , 'property: rotation; to: ' + endRotString + '; easing: linear; dur: 30000; loop: true')
       }
     }
