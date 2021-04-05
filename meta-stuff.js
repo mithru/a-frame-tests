@@ -2,6 +2,13 @@ AFRAME.registerComponent('meta-stuff', {
     schema: {
     },
     init() {
+      let data = this.data;
+      let el = this.el;
+      let textureLoader = new THREE.TextureLoader();
+      textureLoader.load('./assets/hdris/tahoe-Resized.jpg', function(texture){
+        el.object3D.environment = texture
+        console.log(el.object3D.environment);
+      });
       this.debugTextElement = document.getElementById('debug-text')
       this.debugTextElement.innerHTML = "Test"
       this.camera = document.getElementById('camera')
@@ -53,7 +60,7 @@ AFRAME.registerComponent('meta-stuff', {
 
       if(!this.positionSet){
         this.camFinal.object3D.getWorldPosition(this.camWorldPosition)
-        console.log(this.camWorldPosition);
+        // console.log(this.camWorldPosition);
         this.debugTextElement.innerHTML = this.camWorldPosition.x + ' 4 ' + this.camWorldPosition.z
       }
     },
