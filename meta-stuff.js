@@ -7,8 +7,11 @@ AFRAME.registerComponent('meta-stuff', {
       this.camera = document.getElementById('camera')
       this.hiderWalls = document.getElementById('hider-walls')
       this.allContent = document.getElementById('all-content')
-      this.doorPlaceholder = document.getElementById('parent')
+      this.parent = document.getElementById('parent')
+      this.doorplaceholder = document.getElementById('door-placeholder')
       this.cta = document.getElementById('intro-cta')
+      this.overlay = document.getElementById('overlay')
+      this.dashboardElements = document.getElementById('dashboard-content')
 
       // this.hiderWalls.object3D.visible = false
       this.allContent.object3D.visible = false
@@ -16,15 +19,32 @@ AFRAME.registerComponent('meta-stuff', {
 
       this.startExperience = () => {
         console.log("start");
-      }
-      console.log("test");
+        this.overlay.animate(
+          [
+            {transform:'translateY(0px)'},
+            {transform:'translateY(500px)'}
+          ], {
+            easing: "ease-in-out",
+            duration: 1000
+          });
 
+          this.allContent.object3D.visible = true
+          this.doorplaceholder.object3D.visible = false
+          this.camera.setAttribute('animation' , 'property: position; delay: 3000; to: 0 4 -20; easing: easeInOutQuad; loop: false; dur: 3000')
+          // this.cta.visible = true
+          this.overlay.style.visibility = "hidden"
+
+      }
+      this.showPortalElements = () => {
+        this.dashboardElements.object3D.visible = true
+      }
       this.cta.addEventListener('click', this.startExperience)
+      this.camera.addEventListener('animationcomplete', this.showPortalElements)
 
     },
     tick() {
       if(!this.positionSet){
-        this.doorPlaceholder.object3D.rotation.y = this.camera.object3D.rotation.y
+        this.parent.object3D.rotation.y = this.camera.object3D.rotation.y
       }
     },
   }

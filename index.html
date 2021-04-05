@@ -24,13 +24,6 @@
     <div id="container">
       <video autoplay="true" id="videoElement"></video>
       <div id="debug-text">Init text</div>
-      <div class="overlay">
-        <div id="intro-place-door">
-          <div id="intro-text">Place the portal door in your space.</div>
-          <br>
-          <div id="intro-cta"><button type="button">PLACE DOOR</button></div>
-        </div>
-      </div>
     </div>
 
     <a-scene
@@ -88,7 +81,7 @@
       </a-entity> -->
       <!-- <a-gltf-model src="#door-solid" rotation="0 180 0" material="shader: flat;  color:white"></a-gltf-model> -->
       <a-entity id="parent" position="0 0 0">
-        <a-plane id="door-placeholder" material="shader: flat;  color:white; opacity: 0.2" width="6" height="10" position="0 0 -15" ></a-plane>
+        <a-plane id="door-placeholder" material="shader: flat;  color:white; opacity: 0.2" width="5" height="20" position="0 0 -15" ></a-plane>
         <a-entity id="all-content" position="0 0 -15">
           <!-- Hider walls -->
           <a-entity id="hider-walls">
@@ -181,6 +174,13 @@
         </a-entity>
       </a-entity>
     </a-scene>
+      <div id="overlay">
+        <div id="intro-place-door">
+          <div id="intro-text">Place the portal door in your space.</div>
+          <br>
+          <div id="intro-cta">PLACE DOOR</div>
+        </div>
+      </div>
     <script src="video-feed.js"></script>
   </body>
 </html>

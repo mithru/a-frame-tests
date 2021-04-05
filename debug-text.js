@@ -33,9 +33,9 @@ AFRAME.registerComponent('debug-custom', {
         // check if inside
         const isInside = (dist < 9.5)
         if (isInside) {
-          this.dashboardElements.object3D.visible = true
-          this.hasEntered = true
-          this.walls.object3D.visible = false
+          // this.dashboardElements.object3D.visible = true
+          // this.hasEntered = true
+          // this.walls.object3D.visible = false
         }
       }
     },

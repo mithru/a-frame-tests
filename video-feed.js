@@ -18,9 +18,3 @@ function runVideo(){
       });
   }
 }
-
-function test(){
-  console.log("yoo");
-}
-
-document.getElementById('intro-cta').addEventListener("click", test, false)
