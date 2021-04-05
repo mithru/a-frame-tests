@@ -51,11 +51,10 @@ AFRAME.registerComponent('meta-stuff', {
     },
     tick() {
 
-      this.camFinal.object3D.getWorldPosition(this.camWorldPosition)
-      console.log(this.camWorldPosition);
-      this.debugTextElement.innerHTML = this.camWorldPosition.x + ' 4 ' + this.camWorldPosition.z
       if(!this.positionSet){
-        // this.parent.object3D.rotation.y = this.camera.object3D.rotation.y
+        this.camFinal.object3D.getWorldPosition(this.camWorldPosition)
+        console.log(this.camWorldPosition);
+        this.debugTextElement.innerHTML = this.camWorldPosition.x + ' 4 ' + this.camWorldPosition.z
       }
     },
   }
