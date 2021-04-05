@@ -84,12 +84,14 @@
         material="shader: flat;  color:white">
       </a-entity> -->
       <!-- <a-gltf-model src="#door-solid" rotation="0 180 0" material="shader: flat;  color:white"></a-gltf-model> -->
-      <a-entity id="parent" position="0 0 0">
-        <a-plane id="door-placeholder" material="shader: flat;  color:white; opacity: 0.2" width="5" height="20" position="0 0 -15" ></a-plane>
+      <a-entity id="parent" position="0 -3 0">
+        <a-plane id="door-placeholder" material="shader: flat;  color:white; opacity: 0.2" width="5" height="10" position="0 5 -15" ></a-plane>
         <a-entity id="all-content" position="0 0 -15">
           <!-- Hider walls -->
           <a-entity id="hider-walls">
             <a-entity id="reverse-wall">
+              <a-box depth="2" height="2" width="2"  material="opacity: 0.2"></a-box>
+
               <a-entity
                 scale="5 5 5"
                 id="doorset"
@@ -178,13 +180,13 @@
         </a-entity>
       </a-entity>
     </a-scene>
-      <div id="overlay">
-        <div id="intro-place-door">
-          <div id="intro-text">Place the portal door in your space.</div>
-          <br>
-          <div id="intro-cta">PLACE DOOR</div>
-        </div>
+    <div id="overlay">
+      <div id="intro-place-door">
+        <div id="intro-text">Place the portal door in your space.</div>
+        <br>
+        <div id="intro-cta">PLACE DOOR</div>
       </div>
+    </div>
     <script src="video-feed.js"></script>
   </body>
 </html>
