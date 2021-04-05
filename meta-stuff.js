@@ -35,7 +35,7 @@ AFRAME.registerComponent('meta-stuff', {
           this.allContent.object3D.visible = true
           this.doorplaceholder.object3D.visible = false
           this.camera.object3D.rotation.y -= this.camera.object3D.rotation.y;
-          this.camera.setAttribute('animation' , 'property: position; delay: 3000; to: 0 4 -20; easing: easeInOutQuad; loop: false; dur: 3000')
+          this.camera.setAttribute('animation' , 'property: position; delay: 3000; to: ' + this.camFinal.object3D.position.x + ' 4 ' + this.camFinal.object3D.position.z + '; easing: easeInOutQuad; loop: false; dur: 3000')
           // this.cta.visible = true
           this.overlay.style.visibility = "hidden"
         }
@@ -48,8 +48,8 @@ AFRAME.registerComponent('meta-stuff', {
       this.camera.addEventListener('animationcomplete', this.showPortalElements)
     },
     tick() {
-      console.log(this.camFinal.object3D.position)
-      this.debugTextElement.innerHTML = "" + (this.camFinal.object3D.position.x)
+      // concst()
+      // this.debugTextElement.innerHTML = "" + (this.camFinal.object3D.position.x)
 
       if(!this.positionSet){
         this.parent.object3D.rotation.y = this.camera.object3D.rotation.y
