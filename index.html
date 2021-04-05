@@ -2,10 +2,10 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <title>360&deg; Image</title>
+    <title>Run through</title>
     <meta name="description" content="360&deg; Image - A-Frame">
     <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
     <script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
     <script src="https://unpkg.com/aframe-event-set-component@5/dist/aframe-event-set-component.min.js"></script>
     <script src="https://unpkg.com/aframe-layout-component@5.3.0/dist/aframe-layout-component.min.js"></script>
@@ -15,27 +15,30 @@
 
     <script src="cubemap-static.js"></script>
     <script src="debug-text.js"></script>
+    <script src="meta-stuff.js"></script>
     <script src="hider-material.js"></script>
-    <script src="item-hovered.js"></script>
+    <script src="dashboard-item.js"></script>
     <link rel="stylesheet" href="main.css">
   </head>
-  <body onload="start()">
+  <body onload="runVideo()">
     <div id="container">
       <video autoplay="true" id="videoElement"></video>
-    </div>
-    <div class="overlay">
-      <div id="intro-top">
-        <!--<div id="intro-pre-text">an AR experience by</div>-->
-        <!-- <div id="intro-logo"><img id="logo" src="./assets/images/studio-kohler-logo-temp.png"></div> -->
+      <div id="debug-text">Init text</div>
+      <div class="overlay">
+        <div id="intro-place-door">
+          <div id="intro-text">Place the portal door in your space.</div>
+          <br>
+          <div id="intro-cta"><button type="button">PLACE DOOR</button></div>
+        </div>
       </div>
-      <div  id="debug-text">Init text</div>
     </div>
+
     <a-scene
       renderer="antialias: true; colorManagement: true; physicallyCorrectLights: true;"
       stats
-      debug-this
+      meta-stuff
+      debug-custom="visible: true"
       vr-mode-ui="enabled: false">
-    <!-- We can define assets here to be loaded when A-Frame initializes -->
       <a-assets>
         <!--<a-asset-item id="ballModel" src="assets/jini-ball.glb"></a-asset-item>-->
         <a-asset-item id="mainSculpture1" src="assets/glbs/Sculptures.glb"></a-asset-item>
@@ -45,12 +48,15 @@
         <a-asset-item id="glassModel" src="assets/glbs/frostedglass.glb"></a-asset-item>
         <a-asset-item id="matteModel" src="assets/glbs/matteblack.glb"></a-asset-item>
         <a-asset-item id="baseModel" src="assets/glbs/base.glb"></a-asset-item>
+        <a-asset-item id="door-set" src="assets/glbs/door_set.glb"></a-asset-item>
+        <a-asset-item id="door-solid" src="assets/glbs/door_solid.glb"></a-asset-item>
         <a-asset-item id="configA-item1" src="assets/glbs/26299.glb"></a-asset-item>
         <a-asset-item id="configA-item2" src="assets/glbs/26296.glb"></a-asset-item>
         <a-asset-item id="configA-item3" src="assets/glbs/26284.glb"></a-asset-item>
         <a-asset-item id="configA-item4" src="assets/glbs/26314.glb"></a-asset-item>
         <a-asset-item id="configA-item5" src="assets/glbs/28213.glb"></a-asset-item>
         <a-asset-item id="configA-item6" src="assets/glbs/28214.glb"></a-asset-item>
+        <a-asset-item id="configA-item0" src="assets/glbs/CONFIG-A.glb"></a-asset-item>
 
         <img id="tahoe" src="./assets/hdris/tahoe-Resized.jpg">
         <!--<img id="posx" src="./assets/cubemap/posx.png">-->
@@ -67,156 +73,111 @@
         <img id="negz" src="./assets/cubemap/nz.png">
       </a-assets>
 
-      <a-camera id="camera" position="0 4 8" animation="property: position; delay: 5000; to: 0 4 -2; easing: easeInOutQuad; loop: false; dur: 3000">
+      <!-- <a-camera id="camera" position="0 4 8" animation="property: position; delay: 5000; to: 0 4 -2; easing: easeInOutQuad; loop: false; dur: 3000">
         <a-cursor  material="color: black; shader: flat; opacity: 0"></a-cursor>
+      </a-camera> -->
+      <a-camera id="camera" position="0 4 0" look-controls="reverseMouseDrag:true; touchEnabled: false">
+        <a-cursor  material="color: black; shader: flat; opacity: 0.2"></a-cursor>
       </a-camera>
-
-      <a-entity id="all-content" position="0 0 0">
-      <!-- Hider walls -->
-        <a-entity id="hider-walls">
-          <!-- front-top-->
-          <a-box scale="6 100 1" position="0 60 0"  hider-material></a-box>
-          <!-- left-->
-          <a-box scale="94 100 1" position="-50 50 0" hider-material></a-box>
-          <!--<a-box scale="94 100 1" rotate="0 180 0" position="-50 50 0" hider-material></a-box>-->
-          <!-- right-->
-          <a-box scale="94 100 1" position="50 50 0" hider-material></a-box>
-          <!-- behind-->
-          <a-box scale="200 100 1" position="0 50 200" hider-material></a-box>
-          <!-- proper-top-->
-          <a-box scale="200 1 201" position="0 100 100" hider-material></a-box>
-          <!-- proper-bottom-->
-          <a-box scale="200 1 201" position="0 -0.5 100" hider-material></a-box>
-          <a-box scale="1 100 200" position="-100 50 100" hider-material></a-box>
-          <a-box scale="1 100 200" position="100 50 100" hider-material></a-box>
-        </a-entity>
-        <a-entity id="portal-wall">
-          <a-plane scale="4 6 1" rotation="180 0 0" position="0 3 0.5" hider-material></a-plane>
-        </a-entity>
-        <!-- <a-entity
-          light="
-            type: directional;
-            intensity: 0.8;
-            castShadow: true;
-            shadowMapHeight:2048;
-            shadowMapWidth:2048;
-            shadowCameraTop: 10;"
-          position="1 4.3 2.5"
-          shadow>
-        </a-entity> -->
-
-        <a-entity light="type: ambient; intensity: 1;"></a-entity>
-        <a-entity id="portal-contents" position="0 0 0">
-          <a-entity
-            id="main1"
-            scale="0 0 0"
-            rotation="0 1 0"
-            position="0 0 -10"
-            gltf-model="#mainSculpture1">
+      <!-- <a-entity
+        rotation="0 180 0"
+        scale="5 5 5"
+        id="door-placeholder"
+        gltf-model="#door-solid"
+        material="shader: flat;  color:white">
+      </a-entity> -->
+      <!-- <a-gltf-model src="#door-solid" rotation="0 180 0" material="shader: flat;  color:white"></a-gltf-model> -->
+      <a-entity id="parent" position="0 0 0">
+        <a-plane id="door-placeholder" material="shader: flat;  color:white; opacity: 0.2" width="6" height="10" position="0 0 -15" ></a-plane>
+        <a-entity id="all-content" position="0 0 -15">
+          <!-- Hider walls -->
+          <a-entity id="hider-walls">
+            <a-entity id="reverse-wall">
+              <a-entity
+                scale="5 5 5"
+                id="doorset"
+                gltf-model="#door-set"
+                hider-material>
+              </a-entity>
+              <a-plane id="hider-stage-top" width="50" height="10" position="0 15 0"  hider-material></a-plane>
+              <a-plane id="hider-stage-left" width="20" height="10" position="-15 5 0"  hider-material></a-plane>
+              <a-plane id="hider-stage-right" width="20" height="10" position="15 5 0"  hider-material></a-plane>
+            </a-entity>
+            <a-entity id="wall-env">
+              <a-plane id="hider-behind" width="50" height="20" rotation="0 180 0" position="0 10 30"  hider-material></a-plane>
+              <a-plane id="hider-top" width="50" height="30" rotation="90 0 0" position="0 20 15"  hider-material></a-plane>
+              <a-plane id="hider-bottom" width="50" height="30" rotation="-90 0 0" position="0 0 15"  hider-material></a-plane>
+              <a-plane id="hider-left" width="30" height="20" rotation="0 90 0" position="-25 10 15"  hider-material></a-plane>
+              <a-plane id="hider-right" width="30" height="20" rotation="0 -90 0" position="25 10 15"  hider-material></a-plane>
+            </a-entity>
           </a-entity>
-          <a-entity id="dashboard-content" position="0 0 0">
+          <a-entity light="type: ambient; intensity: 1;"></a-entity>
+          <a-entity id="portal-contents" position="0 0 0">
             <a-entity
-              id="configA1"
-              scale="12 12 12"
-              gltf-model="#configA-item1"
-              cubemap-static
-              dashboard-item="rot: -140; y : 5"
-              >
-              <a-box depth="0.1" height="0.1" width="0.1"  material="opacity: 0"></a-box>
+              id="main1"
+              scale="0 0 0"
+              rotation="0 1 0"
+              position="0 0 -10"
+              gltf-model="#mainSculpture1">
             </a-entity>
-            <a-entity
-              id="configA2"
-              scale="8 8 8"
-              gltf-model="#configA-item2"
-              cubemap-static
-              dashboard-item="rot: -40;"
-              >
-              <a-box position="0 0.1 0" depth="0.3" height="0.3" width="0.5"  material="opacity: 0"></a-box>
-            </a-entity>
-            <a-entity
-              id="configA3"
-              scale="8 8 8"
-              gltf-model="#configA-item3"
-              cubemap-static
-              dashboard-item="rot: 40;"
-              >
-              <a-box position="0 0.1 0" depth="0.3" height="0.6" width="0.6"  material="opacity: 0"></a-box>
-            </a-entity>
-            <a-entity
-              id="configA4"
-              scale="8 8 8"
-              gltf-model="#configA-item4"
-              cubemap-static
-              dashboard-item="rot: 90;"
-              >
-              <a-box position="0 0.1 0" depth="0.3" height="0.6" width="0.3"  material="opacity: 0"></a-box>
-            </a-entity>
-            <a-entity
-              id="configA5"
-              scale="12 12 12"
-              gltf-model="#configA-item5"
-              cubemap-static
-              dashboard-item="rot: 140;"
-              >
-              <a-box position="0 0 0" depth="0.2" height="0.2" width="0.2"  material="opacity: 0"></a-box>
-            </a-entity>
-        </a-entity>
-
-          <!-- <a-entity
-            id="base"
-            scale="0.3 0.3 0.3"
-            rotation="0 -90 0"
-            position="0 0 -14.65"
-            gltf-model="#baseModel">
-          </a-entity> -->
-          <!-- <a-entity id="others" position="0 0 0" scale="1 1 1">
-            <a-entity
-              id="nickel"
-              scale="1 1 1"
-              rotation="0 -90 0"
-              position="-10 1.5 0"
-              gltf-model="#nickelModel"
-              shadow>
-            </a-entity>
-            <a-entity
-              id="brass"
-              scale="1 1 1"
-              rotation="0 -90 0"
-              position="-5 1.5 -10"
-              gltf-model="#brassModel"
-              cubemap-static
-              shadow>
-            </a-entity>
-            <a-entity
-              id="chrome"
-              scale="1 1 1"
-              rotation="0 -90 0"
-              position="5 1.5 -10"
-              gltf-model="#chromeModel"
-              cubemap-static
-              shadow>
-            </a-entity>
-            <a-entity
-              id="matte"
-              scale="1 1 1"
-              rotation="0 -90 0"
-              position="0 1.5 -14"
-              gltf-model="#matteModel"
-              cubemap-static
-              shadow>
-            </a-entity>
-            <a-entity
-              id="glass"
-              scale="1 1 1"
-              rotation="0 -90 0"
-              position="10 1.5 0"
-              gltf-model="#glassModel"
-              cubemap-static
-              shadow>
-            </a-entity>
-          </a-entity> -->
-          <a-sky src="#tahoe"></a-sky>
-          <!--<a-box scale="5 1 10" position="0 -0.5 -4.5" color="#8083A2" shadow></a-box>-->
+            <a-entity id="dashboard-content" position="0 0 0">
+              <a-entity
+                id="configA0"
+                scale="12 12 12"
+                gltf-model="#configA-item0"
+                cubemap-static
+                dashboard-item="rot: -90; y : 5"
+                >
+                <a-box depth="0.1" height="0.1" width="0.1"  material="opacity: 0.2"></a-box>
+              </a-entity>
+              <a-entity
+                id="configA1"
+                scale="12 12 12"
+                gltf-model="#configA-item1"
+                cubemap-static
+                dashboard-item="rot: -180; y : 5"
+                >
+                <a-box depth="0.1" height="0.1" width="0.1"  material="opacity: 0"></a-box>
+              </a-entity>
+              <a-entity
+                id="configA2"
+                scale="8 8 8"
+                gltf-model="#configA-item2"
+                cubemap-static
+                dashboard-item="rot: 0;"
+                >
+                <a-box position="0 0.1 0" depth="0.3" height="0.3" width="0.5"  material="opacity: 0"></a-box>
+              </a-entity>
+              <a-entity
+                id="configA3"
+                scale="8 8 8"
+                gltf-model="#configA-item3"
+                cubemap-static
+                dashboard-item="rot: -150;"
+                >
+                <a-box position="0 0.1 0" depth="0.3" height="0.6" width="0.6"  material="opacity: 0"></a-box>
+              </a-entity>
+              <a-entity
+                id="configA4"
+                scale="8 8 8"
+                gltf-model="#configA-item4"
+                cubemap-static
+                dashboard-item="rot: -120;"
+                >
+                <a-box position="0 0.1 0" depth="0.3" height="0.6" width="0.3"  material="opacity: 0"></a-box>
+              </a-entity>
+              <a-entity
+                id="configA5"
+                scale="12 12 12"
+                gltf-model="#configA-item5"
+                cubemap-static
+                dashboard-item="rot: -60;"
+                >
+                <a-box position="0 0 0" depth="0.2" height="0.2" width="0.2"  material="opacity: 0"></a-box>
+              </a-entity>
+          </a-entity>
+          <a-sky src="#tahoe" rotation="0 90 0"></a-sky>
+          </a-entity>
         </a-entity>
       </a-entity>
     </a-scene>

@@ -1,5 +1,6 @@
 body{
-  background-color:black;
+  /* background-color:black; */
+  font-family: 'Roboto', sans-serif;
 }
 
 #container{
@@ -17,9 +18,50 @@ body{
   height: 100vh;
 }
 
+#intro-place-door{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  bottom: 0vmax;
+  left: 0vmax;
+  background-color:rgba(0,0,0,0.5);
+  position: absolute;
+  width:100%;
+  height:35%;
+}
+
+#intro-text  {
+    padding: 10%;
+    max-width:80%;
+    height:10%;
+    margin: 0 auto;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+#intro-cta  {
+  border-radius:10%;
+  padding:5%;
+  height:10%;
+  background-color: white;
+  color:black;
+  max-width:80%;
+  margin: 0 auto;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
 .overlay{
   color:white;
-  font-family: 'Roboto', sans-serif;
+  /* background-color:rgba(0,0,0,0.2); */
+  position: absolute;
+  width:100%;
+  height:100%;
+  z-index: 50;
+  top: 0vmax;
+  left: 0vmax;
 }
 
 img {
@@ -29,12 +71,12 @@ img {
 
 #debug-text{
   position: absolute;
+  font-family: 'Roboto', sans-serif;
   width:100%;
   z-index: 50;
   bottom: 0vmax;
   left: 0vmax;
   padding:1vmax;
-  background:black;
   color:white;
 }
 

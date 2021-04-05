@@ -1,4 +1,4 @@
-function start(){
+function runVideo(){
   video = document.querySelector("#videoElement");
   console.log(video)
   if (navigator.mediaDevices.getUserMedia) {
@@ -18,3 +18,9 @@ function start(){
       });
   }
 }
+
+function test(){
+  console.log("yoo");
+}
+
+document.getElementById('intro-cta').addEventListener("click", test, false)
