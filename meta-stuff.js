@@ -16,6 +16,7 @@ AFRAME.registerComponent('meta-stuff', {
       this.cta = document.getElementById('intro-cta')
       this.overlay = document.getElementById('overlay')
       this.dashboardElements = document.getElementById('dashboard-content')
+      this.camWorldPosition = new THREE.Vector3();
 
       // this.hiderWalls.object3D.visible = false
       this.allContent.object3D.visible = false
@@ -35,7 +36,7 @@ AFRAME.registerComponent('meta-stuff', {
           this.allContent.object3D.visible = true
           this.doorplaceholder.object3D.visible = false
           this.camera.object3D.rotation.y -= this.camera.object3D.rotation.y;
-          this.camera.setAttribute('animation' , 'property: position; delay: 3000; to: ' + this.camFinal.object3D.position.x + ' 4 ' + this.camFinal.object3D.position.z + '; easing: easeInOutQuad; loop: false; dur: 3000')
+          this.camera.setAttribute('animation' , 'property: position; delay: 3000; to: ' + this.camWorldPosition.x + ' 4 ' + this.camWorldPosition.z + '; easing: easeInOutQuad; loop: false; dur: 3000')
           // this.cta.visible = true
           this.overlay.style.visibility = "hidden"
         }
@@ -46,11 +47,13 @@ AFRAME.registerComponent('meta-stuff', {
       }
       this.cta.addEventListener('click', this.startExperience)
       this.camera.addEventListener('animationcomplete', this.showPortalElements)
+
     },
     tick() {
-      // concst()
-      this.debugTextElement.innerHTML = this.camFinal.object3D.position.x + ' 4 ' + this.camFinal.object3D.position.z
 
+      this.camFinal.object3D.getWorldPosition(this.camWorldPosition)
+      console.log(this.camWorldPosition);
+      this.debugTextElement.innerHTML = this.camWorldPosition.x + ' 4 ' + this.camWorldPosition.z
       if(!this.positionSet){
         this.parent.object3D.rotation.y = this.camera.object3D.rotation.y
       }
