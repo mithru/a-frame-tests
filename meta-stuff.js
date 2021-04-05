@@ -6,6 +6,8 @@ AFRAME.registerComponent('meta-stuff', {
       this.debugTextElement.innerHTML = "Test"
       this.camera = document.getElementById('camera')
       this.hiderWalls = document.getElementById('hider-walls')
+      this.envWalls = document.getElementById('wall-env')
+      this.reverseWall = document.getElementById('reverse-wall')
       this.allContent = document.getElementById('all-content')
       this.parent = document.getElementById('parent')
       this.doorplaceholder = document.getElementById('door-placeholder')
@@ -19,6 +21,7 @@ AFRAME.registerComponent('meta-stuff', {
 
       this.startExperience = () => {
         console.log("start");
+        this.positionSet = true
         this.overlay.animate(
           [
             {transform:'translateY(0px)'},
@@ -33,10 +36,11 @@ AFRAME.registerComponent('meta-stuff', {
           this.camera.setAttribute('animation' , 'property: position; delay: 3000; to: 0 4 -20; easing: easeInOutQuad; loop: false; dur: 3000')
           // this.cta.visible = true
           this.overlay.style.visibility = "hidden"
-
-      }
+        }
       this.showPortalElements = () => {
         this.dashboardElements.object3D.visible = true
+        this.envWalls.object3D.visible = false;
+        this.reverseWall.setAttribute('animation' , 'property: position; to: 0 0 10; easing: easeInOutQuad; loop: false; dur: 3000')
       }
       this.cta.addEventListener('click', this.startExperience)
       this.camera.addEventListener('animationcomplete', this.showPortalElements)

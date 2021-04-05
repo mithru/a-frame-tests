@@ -28,7 +28,7 @@
 
     <a-scene
       renderer="antialias: true; colorManagement: true; physicallyCorrectLights: true;"
-      stats
+      
       meta-stuff
       debug-custom="visible: true"
       vr-mode-ui="enabled: false">
@@ -69,7 +69,8 @@
       <!-- <a-camera id="camera" position="0 4 8" animation="property: position; delay: 5000; to: 0 4 -2; easing: easeInOutQuad; loop: false; dur: 3000">
         <a-cursor  material="color: black; shader: flat; opacity: 0"></a-cursor>
       </a-camera> -->
-      <a-camera id="camera" position="0 4 0" look-controls="reverseMouseDrag:true; touchEnabled: false">
+      <!-- look-controls="reverseMouseDrag:true; touchEnabled: false" -->
+      <a-camera id="camera" position="0 4 0" >
         <a-cursor  material="color: black; shader: flat; opacity: 0.2"></a-cursor>
       </a-camera>
       <!-- <a-entity
