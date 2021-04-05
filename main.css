@@ -74,7 +74,7 @@ img {
   font-family: 'Roboto', sans-serif;
   width:100%;
   z-index: 50;
-  bottom: 0vmax;
+  top: 0vmax;
   left: 0vmax;
   padding:1vmax;
   color:white;
