@@ -18,6 +18,22 @@ body{
   height: 100vh;
 }
 
+#close-button{
+  visibility: hidden;
+  position: absolute;
+  color:black;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  top: 0vmax;
+  right: 0vmax;
+  background-color:white;
+  position: absolute;
+  margin: 20px;
+  width:20px;
+  height:20px;
+}
+
 #intro-place-door{
   display: flex;
   flex-wrap: wrap;

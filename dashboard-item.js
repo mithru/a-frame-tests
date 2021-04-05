@@ -10,6 +10,12 @@ AFRAME.registerComponent('dashboard-item', {
     let el = this.el;
     let interactable = false;
 
+    let closeBtn =  document.getElementById('close-button')
+
+    this.camera = document.getElementById('camera')
+    this.parent = document.getElementById('parent')
+    this.camParent = document.getElementById('cam-parent')
+
     this.toRadians = (angle) => {
       return angle * (Math.PI / 180);
     }
@@ -34,15 +40,17 @@ AFRAME.registerComponent('dashboard-item', {
       interactable = true;
       el.setAttribute('animation__zoomin', 'property: scale; to: ' + endScaleString + '; easing: easeInOutSine; dur: 5000')
       // el.removeAttribute('animation')
-      el.setAttribute('animation', 'property: rotation; to: ' + startRotString + '; easing: linear; dur: 1500; loop: false')
+      // el.setAttribute('animation', 'property: rotation; to: ' + startRotString + '; easing: linear; dur: 1500; loop: false')
     }
     this.hoveredOff = () => {
+      this.camera.setAttribute('look-controls', 'enabled', true);
 
+      closeBtn.style.visibility = "hidden"
       interactable = false;
       console.log('hovered off ' + el);
       // el.removeAttribute('animation__zoomin')
       el.setAttribute('animation__zoomin', 'property: scale; to: '+ startScaleString +'; easing: easeInOutSine; dur: 1500')
-      el.setAttribute('animation', 'property: rotation; to: ' + endRotString + '; easing: linear; dur: 30000')
+      // el.setAttribute('animation', 'property: rotation; to: ' + endRotString + '; easing: linear; dur: 30000')
 
       // el.removeAttribute('animation__rotation')
       // el.setAttribute('animation__rotation', 'property: rotation; to: 0 360 0; easing: linear; delay: 30000; loop: true')
@@ -60,6 +68,8 @@ AFRAME.registerComponent('dashboard-item', {
     this.readyForMV = () => {
       if(interactable){
         console.log("Load the model now...")
+        closeBtn.style.visibility = "visible"
+        this.camera.setAttribute('look-controls', 'enabled', false);
       }
       // el.removeAttribute('animation__reset');
       // el.setAttribute('animation__rotation', 'property: rotation; from: 0 0 0; to: 0 360 0; easing: linear; dur: 30000; loop: true')
@@ -68,7 +78,11 @@ AFRAME.registerComponent('dashboard-item', {
     el.addEventListener('mouseleave', this.hoveredOff)
     el.addEventListener('animationcomplete__zoomin', this.readyForMV)
     el.addEventListener('animationcomplete', this.resetRotation)
+    closeBtn.addEventListener('click', this.hoveredOff)
     this.resetRotation();
+
+  }, tick(){
+
   }
 });
 // <!--
