@@ -48,7 +48,7 @@ AFRAME.registerComponent('meta-stuff', {
     },
     tick() {
       if(!this.positionSet){
-        this.doorplaceholder.object3D.rotation.y = this.camera.object3D.rotation.y
+        this.parent.object3D.rotation.y = this.camera.object3D.rotation.y
       }
     },
   }
