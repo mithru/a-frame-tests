@@ -10,6 +10,7 @@ AFRAME.registerComponent('meta-stuff', {
       this.reverseWall = document.getElementById('reverse-wall')
       this.allContent = document.getElementById('all-content')
       this.parent = document.getElementById('parent')
+      this.camParent = document.getElementById('cam-parent')
       this.doorplaceholder = document.getElementById('door-placeholder')
       this.cta = document.getElementById('intro-cta')
       this.overlay = document.getElementById('overlay')
@@ -33,7 +34,7 @@ AFRAME.registerComponent('meta-stuff', {
 
           this.allContent.object3D.visible = true
           this.doorplaceholder.object3D.visible = false
-          this.camera.object3D.rotation.y = 0;
+          this.camParent.object3D.rotation.y = -this.camera.object3D.rotation.y;
           this.camera.setAttribute('animation' , 'property: position; delay: 3000; to: 0 4 -20; easing: easeInOutQuad; loop: false; dur: 3000')
           // this.cta.visible = true
           this.overlay.style.visibility = "hidden"
