@@ -71,7 +71,7 @@
       </a-camera> -->
       <!-- look-controls="reverseMouseDrag:true; touchEnabled: false" -->
       <a-entity id="cam-parent" position="0 0 0">
-        <a-camera id="camera" position="0 4 0"  look-controls="touchEnabled: false" >
+        <a-camera id="camera" position="0 4 0"  look-controls="touchEnabled: true" >
           <a-cursor  material="color: black; shader: flat; opacity: 0.2;"></a-cursor>
         </a-camera>
       </a-entity>
@@ -86,100 +86,100 @@
       <!-- <a-gltf-model src="#door-solid" rotation="0 180 0" material="shader: flat;  color:white"></a-gltf-model> -->
       <a-entity id="parent" position="0 0 0">
         <a-plane id="door-placeholder" material="shader: flat;  color:white; opacity: 0.2" width="5" height="20" position="0 0 -15" ></a-plane>
-      </a-entity>
-      <a-entity id="all-content" position="0 0 -15">
-        <!-- Hider walls -->
-        <a-entity id="hider-walls">
-          <a-entity id="reverse-wall">
-            <a-entity
-              scale="5 5 5"
-              id="doorset"
-              gltf-model="#door-set"
-              hider-material>
+        <a-entity id="all-content" position="0 0 -15">
+          <!-- Hider walls -->
+          <a-entity id="hider-walls">
+            <a-entity id="reverse-wall">
+              <a-entity
+                scale="5 5 5"
+                id="doorset"
+                gltf-model="#door-set"
+                hider-material>
+              </a-entity>
+              <a-plane id="hider-stage-top" width="50" height="10" position="0 15 0"  hider-material></a-plane>
+              <a-plane id="hider-stage-left" width="20" height="10" position="-15 5 0"  hider-material></a-plane>
+              <a-plane id="hider-stage-right" width="20" height="10" position="15 5 0"  hider-material></a-plane>
             </a-entity>
-            <a-plane id="hider-stage-top" width="50" height="10" position="0 15 0"  hider-material></a-plane>
-            <a-plane id="hider-stage-left" width="20" height="10" position="-15 5 0"  hider-material></a-plane>
-            <a-plane id="hider-stage-right" width="20" height="10" position="15 5 0"  hider-material></a-plane>
+            <a-entity id="wall-env">
+              <a-plane id="hider-behind" width="50" height="20" rotation="0 180 0" position="0 10 30"  hider-material></a-plane>
+              <a-plane id="hider-top" width="50" height="30" rotation="90 0 0" position="0 20 15"  hider-material></a-plane>
+              <a-plane id="hider-bottom" width="50" height="30" rotation="-90 0 0" position="0 0 15"  hider-material></a-plane>
+              <a-plane id="hider-left" width="30" height="20" rotation="0 90 0" position="-25 10 15"  hider-material></a-plane>
+              <a-plane id="hider-right" width="30" height="20" rotation="0 -90 0" position="25 10 15"  hider-material></a-plane>
+            </a-entity>
           </a-entity>
-          <a-entity id="wall-env">
-            <a-plane id="hider-behind" width="50" height="20" rotation="0 180 0" position="0 10 30"  hider-material></a-plane>
-            <a-plane id="hider-top" width="50" height="30" rotation="90 0 0" position="0 20 15"  hider-material></a-plane>
-            <a-plane id="hider-bottom" width="50" height="30" rotation="-90 0 0" position="0 0 15"  hider-material></a-plane>
-            <a-plane id="hider-left" width="30" height="20" rotation="0 90 0" position="-25 10 15"  hider-material></a-plane>
-            <a-plane id="hider-right" width="30" height="20" rotation="0 -90 0" position="25 10 15"  hider-material></a-plane>
+          <a-entity light="type: ambient; intensity: 1;"></a-entity>
+          <a-entity id="portal-contents" position="0 0 0">
+            <a-entity
+              id="camFinalPos"
+              scale="0 0 0"
+              position="0 4 -20">
+            </a-entity>
+            <a-entity
+              id="main1"
+              scale="0 0 0"
+              rotation="0 1 0"
+              position="0 0 -10"
+              gltf-model="#mainSculpture1">
+            </a-entity>
+            <a-entity id="dashboard-content" position="0 0 0">
+              <a-entity
+                id="configA0"
+                scale="12 12 12"
+                gltf-model="#configA-item0"
+                cubemap-static
+                dashboard-item="rot: -90; y : 5"
+                >
+                <a-box depth="0.1" height="0.1" width="0.1"  material="opacity: 0.2"></a-box>
+              </a-entity>
+              <a-entity
+                id="configA1"
+                scale="12 12 12"
+                gltf-model="#configA-item1"
+                cubemap-static
+                dashboard-item="rot: -180; y : 5"
+                >
+                <a-box depth="0.1" height="0.1" width="0.1"  material="opacity: 0"></a-box>
+              </a-entity>
+              <a-entity
+                id="configA2"
+                scale="8 8 8"
+                gltf-model="#configA-item2"
+                cubemap-static
+                dashboard-item="rot: 0;"
+                >
+                <a-box position="0 0.1 0" depth="0.3" height="0.3" width="0.5"  material="opacity: 0"></a-box>
+              </a-entity>
+              <a-entity
+                id="configA3"
+                scale="8 8 8"
+                gltf-model="#configA-item3"
+                cubemap-static
+                dashboard-item="rot: -150;"
+                >
+                <a-box position="0 0.1 0" depth="0.3" height="0.6" width="0.6"  material="opacity: 0"></a-box>
+              </a-entity>
+              <a-entity
+                id="configA4"
+                scale="8 8 8"
+                gltf-model="#configA-item4"
+                cubemap-static
+                dashboard-item="rot: -120;"
+                >
+                <a-box position="0 0.1 0" depth="0.3" height="0.6" width="0.3"  material="opacity: 0"></a-box>
+              </a-entity>
+              <a-entity
+                id="configA5"
+                scale="12 12 12"
+                gltf-model="#configA-item5"
+                cubemap-static
+                dashboard-item="rot: -60;"
+                >
+                <a-box position="0 0 0" depth="0.2" height="0.2" width="0.2"  material="opacity: 0"></a-box>
+              </a-entity>
           </a-entity>
-        </a-entity>
-        <a-entity light="type: ambient; intensity: 1;"></a-entity>
-        <a-entity id="portal-contents" position="0 0 0">
-          <a-entity
-            id="camFinalPos"
-            scale="0 0 0"
-            position="0 4 -20">
+          <a-sky src="#tahoe" rotation="0 90 0"></a-sky>
           </a-entity>
-          <a-entity
-            id="main1"
-            scale="0 0 0"
-            rotation="0 1 0"
-            position="0 0 -10"
-            gltf-model="#mainSculpture1">
-          </a-entity>
-          <a-entity id="dashboard-content" position="0 0 0">
-            <a-entity
-              id="configA0"
-              scale="12 12 12"
-              gltf-model="#configA-item0"
-              cubemap-static
-              dashboard-item="rot: -90; y : 5"
-              >
-              <a-box depth="0.1" height="0.1" width="0.1"  material="opacity: 0.2"></a-box>
-            </a-entity>
-            <a-entity
-              id="configA1"
-              scale="12 12 12"
-              gltf-model="#configA-item1"
-              cubemap-static
-              dashboard-item="rot: -180; y : 5"
-              >
-              <a-box depth="0.1" height="0.1" width="0.1"  material="opacity: 0"></a-box>
-            </a-entity>
-            <a-entity
-              id="configA2"
-              scale="8 8 8"
-              gltf-model="#configA-item2"
-              cubemap-static
-              dashboard-item="rot: 0;"
-              >
-              <a-box position="0 0.1 0" depth="0.3" height="0.3" width="0.5"  material="opacity: 0"></a-box>
-            </a-entity>
-            <a-entity
-              id="configA3"
-              scale="8 8 8"
-              gltf-model="#configA-item3"
-              cubemap-static
-              dashboard-item="rot: -150;"
-              >
-              <a-box position="0 0.1 0" depth="0.3" height="0.6" width="0.6"  material="opacity: 0"></a-box>
-            </a-entity>
-            <a-entity
-              id="configA4"
-              scale="8 8 8"
-              gltf-model="#configA-item4"
-              cubemap-static
-              dashboard-item="rot: -120;"
-              >
-              <a-box position="0 0.1 0" depth="0.3" height="0.6" width="0.3"  material="opacity: 0"></a-box>
-            </a-entity>
-            <a-entity
-              id="configA5"
-              scale="12 12 12"
-              gltf-model="#configA-item5"
-              cubemap-static
-              dashboard-item="rot: -60;"
-              >
-              <a-box position="0 0 0" depth="0.2" height="0.2" width="0.2"  material="opacity: 0"></a-box>
-            </a-entity>
-        </a-entity>
-        <a-sky src="#tahoe" rotation="0 90 0"></a-sky>
         </a-entity>
       </a-entity>
     </a-scene>
