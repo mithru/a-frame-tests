@@ -49,7 +49,7 @@ AFRAME.registerComponent('meta-stuff', {
     },
     tick() {
       // concst()
-      // this.debugTextElement.innerHTML = "" + (this.camFinal.object3D.position.x)
+      this.debugTextElement.innerHTML = this.camFinal.object3D.position.x + ' 4 ' + this.camFinal.object3D.position.z
 
       if(!this.positionSet){
         this.parent.object3D.rotation.y = this.camera.object3D.rotation.y
