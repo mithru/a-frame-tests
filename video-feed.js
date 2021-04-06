@@ -9,6 +9,9 @@ function runVideo(){
       video: videoConstraints,
       audio: false
     };
+    video.setAttribute('autoplay', '');
+    video.setAttribute('muted', '');
+    video.setAttribute('playsinline', '');
     navigator.mediaDevices.getUserMedia(constraints)
       .then(function (stream) {
         video.srcObject = stream;
