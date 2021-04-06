@@ -69,6 +69,7 @@ AFRAME.registerComponent('dashboard-item', {
     this.readyForMV = () => {
       if(interactable){
         console.log("Load the model now...")
+        // make text and ui visible
         closeBtn.style.visibility = "visible"
         this.camera.setAttribute('look-controls', 'enabled', false);
       }

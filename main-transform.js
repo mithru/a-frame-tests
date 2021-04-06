@@ -27,6 +27,10 @@ AFRAME.registerComponent('main-transform', {
         el.addEventListener('mouseenter', this.transition)
       }
 
+      // reform
+      // el.setAttribute('animation' , 'property: scale; delay: 1000; to: 0 0 0; easing: easeInOutQuad; loop: false; dur: 2000')
+      // this.dashboardElements.setAttribute('animation' , 'property: scale; delay: 1000; to: 1 1 1; easing: easeInOutQuad; loop: false; dur: 2000')
+
       this.stageArea.addEventListener('animationcomplete', this.mainSculptureIdle)
       this.stageArea.addEventListener('mouseenter', this.createMainSculpture)
     }
