@@ -100,12 +100,12 @@
       </a-entity> -->
       <!-- <a-gltf-model src="#door-solid" rotation="0 180 0" material="shader: flat;  color:white"></a-gltf-model> -->
       <a-entity id="parent" position="0 -3 0">
-        <a-plane id="door-placeholder" material="shader: flat;  color:white; opacity: 0.2" width="5" height="10" position="0 5 -15" ></a-plane>
+        <a-plane id="door-placeholder" material="shader: flat;  color:white; opacity: 0.2" width="6" height="12" position="0 5 -15" ></a-plane>
         <a-entity id="all-content" position="0 0 -15">
           <!-- Hider walls -->
           <a-entity id="hider-walls">
             <a-entity id="reverse-wall">
-              <a-box id="door-container" onhover-disappear depth="0.4" height="10" width="4" position="0 5 0" material="opacity: 0"></a-box>
+              <a-box id="door-container" scale="1.2 1.2 1.2" onhover-disappear depth="0.4" height="10" width="4" position="0 5 0" material="opacity: 0"></a-box>
               <a-entity
                 scale="5 5 5"
                 id="doorset"
@@ -145,8 +145,8 @@
             </a-entity>
             <a-entity
               id="base"
-              scale="5 5 5"
-              rotation="0 1 0"
+              scale="6 6 6"
+              rotation="0 90 0"
               position="0 -2 -5"
               gltf-model="#desert-base"
               cubemap-static>
