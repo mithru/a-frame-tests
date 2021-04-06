@@ -3,6 +3,11 @@ body{
   font-family: 'Roboto', sans-serif;
 }
 
+.a-loader-title {
+  /*Change loading screen Title text color*/
+  /*color: red;*/
+}
+
 #container{
     position: fixed;
     width: 100%;
