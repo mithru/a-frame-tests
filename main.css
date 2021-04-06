@@ -169,8 +169,20 @@ img {
   justify-content: center;
 }
 
+#portal-overlay {
+  /*background-color:rgba(0,0,0,0.2);*/
+  /*position: absolute;*/
+  width:100%;
+  height:100%;
+  /*min-height: 20%;*/
+  /*z-index: 51;*/
+  /*top: 0vmax;*/
+  /*bottom: 0;*/
+  /*left: 0vmax;*/
+}
+
 #close-button{
-  /*visibility: hidden;*/
+  visibility: hidden;
   position: absolute;
   color:black;
   display: flex;
@@ -178,28 +190,18 @@ img {
   justify-content: center;
   top: 0vmax;
   right: 0vmax;
-  background-color:white;
+  /*background-color:white;*/
   position: absolute;
-  margin: 20px;
-  width:20px;
-  height:20px;
-}
-
-#portal-overlay {
-  /*background-color:rgba(0,0,0,0.2);*/
-  /*position: absolute;*/
-  width:100%;
-  height:100%;
-  /*min-height: 20%;*/
-  z-index: 51;
-  /*top: 0vmax;*/
-  /*bottom: 0;*/
-  /*left: 0vmax;*/
+  margin: 50px;
+  width:2em;
+  height:2em;
 }
 
 .close-icon {
-  background: url('assets/icons/close-ico.png');
-  height: 20px;
-  width: 20px;
+  height: 100%;
+  width: 100%;
   display: block;
+  background-color: black;
+  border-radius: 50px;
+  z-index: 50;
 }
