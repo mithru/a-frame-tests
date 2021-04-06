@@ -5,10 +5,10 @@ AFRAME.registerComponent('meta-stuff', {
       let data = this.data;
       let el = this.el;
       let textureLoader = new THREE.TextureLoader();
-      textureLoader.load('./assets/hdris/tahoe-Resized.jpg', function(texture){
-        el.object3D.environment = texture
-        console.log(el.object3D.environment);
-      });
+      // textureLoader.load('./assets/hdris/desert_4k.png', function(texture){
+      //   el.object3D.environment = texture
+      //   console.log(el.object3D.environment);
+      // });
       this.debugTextElement = document.getElementById('debug-text')
       this.debugTextElement.innerHTML = "Test"
       this.camera = document.getElementById('camera')

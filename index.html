@@ -19,6 +19,8 @@
     <script src="onhover-disappear.js"></script>
     <script src="hider-material.js"></script>
     <script src="dashboard-item.js"></script>
+    <script src="main-transform.js"></script>
+    <script src="pages-nav.js"></script>
     <link rel="stylesheet" href="main.css">
   </head>
   <body onload="runVideo()">
@@ -41,6 +43,7 @@
         <a-asset-item id="glassModel" src="assets/glbs/frostedglass.glb"></a-asset-item>
         <a-asset-item id="matteModel" src="assets/glbs/matteblack.glb"></a-asset-item>
         <a-asset-item id="baseModel" src="assets/glbs/base.glb"></a-asset-item>
+        <a-asset-item id="desert-base" src="assets/glbs/desert/platform.glb"></a-asset-item>
         <a-asset-item id="door-set" src="assets/glbs/door_set.glb"></a-asset-item>
         <a-asset-item id="door-solid" src="assets/glbs/door_solid.glb"></a-asset-item>
         <a-asset-item id="configA-item1" src="assets/glbs/26299.glb"></a-asset-item>
@@ -51,19 +54,30 @@
         <a-asset-item id="configA-item6" src="assets/glbs/28214.glb"></a-asset-item>
         <a-asset-item id="configA-item0" src="assets/glbs/CONFIG-A.glb"></a-asset-item>
 
+        <a-asset-item id="configC-main" src="assets/glbs/desert/sculpture.glb"></a-asset-item>
+        <a-asset-item id="configC-item0" src="assets/glbs/desert/config.glb"></a-asset-item>
+        <a-asset-item id="configC-item1" src="assets/glbs/desert/26288.glb"></a-asset-item>
+        <a-asset-item id="configC-item2" src="assets/glbs/desert/26292.glb"></a-asset-item>
+        <a-asset-item id="configC-item3" src="assets/glbs/desert/26303.glb"></a-asset-item>
+        <!-- <a-asset-item id="configC-item5" src="assets/glbs/desert/28213.glb"></a-asset-item> -->
+        <a-asset-item id="configC-item4" src="assets/glbs/desert/26347.glb"></a-asset-item>
+        <!-- <a-asset-item id="configA-item6" src="assets/glbs/desert/28214.glb"></a-asset-item> -->
+        <!-- <a-asset-item id="configA-item0" src="assets/glbs/desert/CONFIG-A.glb"></a-asset-item> -->
+
         <img id="tahoe" src="./assets/hdris/tahoe-Resized.jpg">
+        <img id="desert" src="./assets/hdris/desert_4k.png">
         <!--<img id="posx" src="./assets/cubemap/posx.png">-->
         <!--<img id="posy" src="./assets/cubemap/posy.png">-->
         <!--<img id="posz" src="./assets/cubemap/posz.png">-->
         <!--<img id="negx" src="./assets/cubemap/negx.png">-->
         <!--<img id="negy" src="./assets/cubemap/negy.png">-->
         <!--<img id="negz" src="./assets/cubemap/negz.png">-->
-        <img id="posx" src="./assets/cubemap/px.png">
-        <img id="posy" src="./assets/cubemap/py.png">
-        <img id="posz" src="./assets/cubemap/pz.png">
-        <img id="negx" src="./assets/cubemap/nx.png">
-        <img id="negy" src="./assets/cubemap/ny.png">
-        <img id="negz" src="./assets/cubemap/nz.png">
+        <img id="posx" src="./assets/cubemap/desert/px.png">
+        <img id="posy" src="./assets/cubemap/desert/py.png">
+        <img id="posz" src="./assets/cubemap/desert/pz.png">
+        <img id="negx" src="./assets/cubemap/desert/nx.png">
+        <img id="negy" src="./assets/cubemap/desert/ny.png">
+        <img id="negz" src="./assets/cubemap/desert/nz.png">
       </a-assets>
 
       <!-- <a-camera id="camera" position="0 4 8" animation="property: position; delay: 5000; to: 0 4 -2; easing: easeInOutQuad; loop: false; dur: 3000">
@@ -116,76 +130,107 @@
               scale="0 0 0"
               position="0 4 0">
             </a-entity>
+            <a-box id="main-stage" depth="3" height="10" width="3" position="0 0.5 -10" material="opacity: 0.2"></a-box>
+
             <a-entity
               id="main1"
               scale="0 0 0"
-              rotation="0 1 0"
+              rotation="0 -90 0"
               position="0 0 -10"
-              gltf-model="#mainSculpture1">
+              gltf-model="#configC-main"
+              cubemap-static
+              main-transform>
+              <a-box depth="0.5" height="1" width="0.4" position="0 0.5 0" material="opacity: 0.2"></a-box>
             </a-entity>
-            <a-entity id="dashboard-content" position="0 0 0">
+            <a-entity
+              id="base"
+              scale="5 5 5"
+              rotation="0 1 0"
+              position="0 -2 -5"
+              gltf-model="#desert-base"
+              cubemap-static>
+            </a-entity>
+            <a-entity id="dashboard-content" position="0 0 0" scale="0 0 0">
               <a-entity
                 id="configA0"
-                scale="12 12 12"
-                gltf-model="#configA-item0"
+                scale="3 3 3"
+                rotation="0 -90 0"
+                gltf-model="#configC-item0"
                 cubemap-static
-                dashboard-item="rot: -90; y : 5"
+                dashboard-item="rot: -90; y : 5; autoRotate : false"
                 >
-                <a-box depth="0.1" height="0.1" width="0.1"  material="opacity: 0.2"></a-box>
+                <a-box depth="1" height="1" width="1"  material="opacity: 0.2"></a-box>
               </a-entity>
               <a-entity
                 id="configA1"
-                scale="12 12 12"
-                gltf-model="#configA-item1"
-                dashboard-item="rot: -180; y : 5"
+                scale="0.5 0.5 0.5"
+                gltf-model="#configC-item1"
+                dashboard-item="rot: -180; y : 0"
+                cubemap-static
                 >
-                <a-box depth="0.1" height="1" width="0.1"  material="opacity: 0.2"></a-box>
+                <a-box position="0 11 0" depth="2" height="20" width="2"  material="opacity: 0.2"></a-box>
               </a-entity>
               <a-entity
                 id="configA2"
-                scale="8 8 8"
-                gltf-model="#configA-item2"
-                dashboard-item="rot: 0;"
+                scale="0.2 0.2 0.2"
+                gltf-model="#configC-item2"
+                dashboard-item="rot: 0;  y : 0"
+                cubemap-static
                 >
-                <!-- <a-box position="0 0.1 0" depth="0.3" height="0.3" width="0.5"  material="opacity: 0.2"></a-box> -->
+                <a-box position="0 11 0" depth="6" height="50" width="6"  material="opacity: 0.2"></a-box>
               </a-entity>
               <a-entity
                 id="configA3"
-                scale="8 8 8"
-                gltf-model="#configA-item3"
-                dashboard-item="rot: -150;"
+                scale="0.2 0.2 0.2"
+                gltf-model="#configC-item3"
+                dashboard-item="rot: -135; "
+                cubemap-static
                 >
-                <!-- <a-box position="0 0.1 0" depth="0.3" height="0.6" width="0.6"  material="opacity: 0.2"></a-box> -->
+                <a-box position="0 0.1 0" depth="6" height="50" width="6"  material="opacity: 0.2"></a-box>
               </a-entity>
               <a-entity
                 id="configA4"
-                scale="8 8 8"
-                gltf-model="#configA-item4"
-                dashboard-item="rot: -120;"
+                scale="0.2 0.2 0.2"
+                gltf-model="#configC-item4"
+                dashboard-item="rot: -45;"
+                cubemap-static
                 >
-                <!-- <a-box position="0 0.1 0" depth="0.3" height="0.6" width="0.3"  material="opacity: 0.2"></a-box> -->
+                <a-box position="0 0.1 0" depth="6" height="50" width="6"  material="opacity: 0.2"></a-box>
               </a-entity>
-              <a-entity
+              <!-- <a-entity
                 id="configA5"
                 scale="12 12 12"
-                gltf-model="#configA-item5"
+                gltf-model="#configC-item5"
                 dashboard-item="rot: -60;"
                 >
-                <!-- <a-box position="0 0 0" depth="0.2" height="0.2" width="0.2"  material="opacity: 0.2"></a-box> -->
-              </a-entity>
+                <a-box position="0 0 0" depth="0.2" height="0.2" width="0.2"  material="opacity: 0.2"></a-box>
+              </a-entity> -->
           </a-entity>
-          <a-sky src="#tahoe" rotation="0 90 0"></a-sky>
+          <!-- <a-sky src="#tahoe" rotation="0 90 0"></a-sky> -->
+          <a-sky src="#desert" rotation="0 -90 0"></a-sky>
           </a-entity>
         </a-entity>
       </a-entity>
     </a-scene>
     <div id="overlay">
-      <div id="close-button">X
-      </div>
+      <div id="close-button">X </div>
       <div id="intro-place-door">
-        <div id="intro-text">Place the portal door in your space.</div>
-        <br>
-        <div id="intro-cta">PLACE DOOR</div>
+       <div id="pages">
+         <div class="page-marker" id="li-1"></div>
+         <div class="page-marker" id="li-2"></div>
+         <div class="page-marker" id="li-3"></div>
+       </div>
+       <div id="desc_div">
+         <div id="desc1" class="intro-text">Find a well-lit space for optimal clarity.</div>
+         <div id="desc2" class="intro-text" style="display: none;">Make sure the space is open enough the move around.</div>
+         <div id="desc3" class="intro-text" style="display: none;">Place the portal door in your space.</div>
+       </div>
+
+       <br>
+       <div id="btn-next1">NEXT</div>
+       <div id="btn-next2">NEXT</div>
+       <div id="intro-cta" style="display: none;">PLACE DOOR</div>
+
       </div>
     </div>
     <script src="video-feed.js"></script>

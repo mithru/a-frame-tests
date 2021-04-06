@@ -4,6 +4,7 @@ AFRAME.registerComponent('dashboard-item', {
     x: {type: 'number', default:0},
     y: {type: 'number', default:4},
     z: {type: 'number', default:-10},
+    autoRotate: {type: 'boolean', default: true},
   },
   init(){
     let data = this.data;
@@ -59,7 +60,7 @@ AFRAME.registerComponent('dashboard-item', {
     }
 
     this.resetRotation = () => {
-      if(!interactable){
+      if(!interactable && data.autoRotate){
         // console.log("Resetting rotation")
         el.setAttribute('animation' , 'property: rotation; to: ' + endRotString + '; easing: linear; dur: 30000; loop: true')
       }
