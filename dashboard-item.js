@@ -11,7 +11,9 @@ AFRAME.registerComponent('dashboard-item', {
     let el = this.el;
     let interactable = false;
 
+    let infoBtn = document.getElementById('info-button')
     let closeBtn =  document.getElementById('close-button')
+    let itemDesc = document.getElementById('item-desc')
 
     this.camera = document.getElementById('camera')
     this.parent = document.getElementById('parent')
@@ -37,7 +39,7 @@ AFRAME.registerComponent('dashboard-item', {
     const endScaleString = (startScale.x*3) + ' ' + (startScale.y*3) + ' ' + (startScale.z*3)
 
     this.hoveredOn = () => {
-      console.log('hovered on ' + el);
+      console.log('hovered on ' + el.object3D);
       interactable = true;
       el.setAttribute('animation__zoomin', 'property: scale; to: ' + endScaleString + '; easing: easeInOutSine; dur: 5000')
       // el.removeAttribute('animation')
@@ -46,7 +48,9 @@ AFRAME.registerComponent('dashboard-item', {
     this.hoveredOff = () => {
       this.camera.setAttribute('look-controls', 'enabled', true);
 
+      infoBtn.style.visibility = "hidden"
       closeBtn.style.visibility = "hidden"
+      itemDesc.style.visibility = "hidden"
       interactable = false;
       console.log('hovered off ' + el);
       // el.removeAttribute('animation__zoomin')
@@ -70,7 +74,9 @@ AFRAME.registerComponent('dashboard-item', {
       if(interactable){
         console.log("Load the model now...")
         // make text and ui visible
+        infoBtn.style.visibility = "visible"
         closeBtn.style.visibility = "visible"
+        itemDesc.style.visibility = "visible"
         this.camera.setAttribute('look-controls', 'enabled', false);
       }
       // el.removeAttribute('animation__reset');

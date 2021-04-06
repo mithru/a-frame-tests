@@ -161,7 +161,6 @@ img {
   justify-content: center;
 }
 
-
 #intro-logo{
   max-width:50%;
   margin: 0 auto;
@@ -179,6 +178,44 @@ img {
   /*top: 0vmax;*/
   /*bottom: 0;*/
   /*left: 0vmax;*/
+}
+
+#item-desc {
+  visibility: hidden;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  position: fixed;
+  width: 100%;
+  /*height: 100%;*/
+  bottom: 5vmax;
+  font-family: 'Playfair Display', serif;
+  font-size: x-large;
+  color: white;
+  /*z-index: 50;*/
+}
+
+#info-button {
+  visibility: hidden;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  top: 0vmax;
+  left: 0vmax;
+  position: absolute;
+  margin: 50px;
+  width:5em;
+  height:2em;
+}
+
+#info-text {
+  font-family: 'Playfair Display', serif;
+  margin-left: .5em;
+}
+
+.info-icon {
+  display: inline-block;
 }
 
 #close-button{

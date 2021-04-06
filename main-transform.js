@@ -11,7 +11,7 @@ AFRAME.registerComponent('main-transform', {
       console.log('howdy');
 
       this.transition = () => {
-        console.log(el.object3D.visible);
+        console.log('Main transform transition: ' + el.object3D.visible);
         if(el.object3D.visible){
           console.log('yoamn');
           el.setAttribute('animation' , 'property: scale; delay: 1000; to: 0 0 0; easing: easeInOutQuad; loop: false; dur: 2000')
