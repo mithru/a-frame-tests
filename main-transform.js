@@ -11,7 +11,7 @@ AFRAME.registerComponent('main-transform', {
       console.log('howdy');
 
       this.transition = () => {
-        console.log(el.object3D.visible);
+        console.log('Main transform transition: ' + el.object3D.visible);
         if(el.object3D.visible){
           console.log('yoamn');
           el.setAttribute('animation' , 'property: scale; delay: 1000; to: 0 0 0; easing: easeInOutQuad; loop: false; dur: 2000')
@@ -22,9 +22,11 @@ AFRAME.registerComponent('main-transform', {
         el.setAttribute('animation' , 'property: scale; delay: 1000; to: 10 10 10; easing: easeInOutQuad; loop: false; dur: 2000')
         this.stageArea.setAttribute('animation' , 'property: scale; delay: 1000; to: 0 0 0; easing: easeInOutQuad; loop: false; dur: 2000')
         this.stageArea.visible = false;
+        console.log('create main sculpture');
       }
       this.mainSculptureIdle = () => {
         el.addEventListener('mouseenter', this.transition)
+        console.log('main sculpture idle');
       }
 
       // reform
