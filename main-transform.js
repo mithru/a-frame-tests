@@ -31,8 +31,10 @@ AFRAME.registerComponent('main-transform', {
       // el.setAttribute('animation' , 'property: scale; delay: 1000; to: 0 0 0; easing: easeInOutQuad; loop: false; dur: 2000')
       // this.dashboardElements.setAttribute('animation' , 'property: scale; delay: 1000; to: 1 1 1; easing: easeInOutQuad; loop: false; dur: 2000')
 
-      this.stageArea.addEventListener('animationcomplete', this.mainSculptureIdle)
-      this.stageArea.addEventListener('mouseenter', this.createMainSculpture)
+      // tunring this off for now
+      this.stageArea.object3D.visible = false;
+      // this.stageArea.addEventListener('animationcomplete', this.mainSculptureIdle)
+      // this.stageArea.addEventListener('mouseenter', this.createMainSculpture)
     }
   }
 );
