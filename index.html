@@ -33,7 +33,7 @@
     </div>
 
     <a-scene
-      loading-screen="dotsColor: white; backgroundColor: black; enabled: true"
+      loading-screen="dotsColor: white; backgroundColor: black; enabled: false"
       renderer="antialias: true; colorManagement: true; physicallyCorrectLights: true;"
       debug-custom="visible: true"
       meta-stuff
@@ -235,20 +235,19 @@
       <div id="caption-button"><img id="caption-icon" src="assets/icons/ClosedCaptioning.svg" alt="" /></div>
     </div>
 
-    <table id="portal-btm">
-      <tr>
-        <td id="spaces-button"><img id="spaces-icon" src="assets/icons/Worlds.svg" alt="" /></td>
-        <td id="transform-button"><img id="transform-icon" src="assets/icons/Transform.svg" alt="" /></td>
-        <td id="share-button"><img id="share-icon" src="assets/icons/Share.svg" alt="" /></td>
-      </tr>
-    </table>
+    <div id="portal-btm">
+      <div id="spaces-button"><img id="spaces-icon" src="assets/icons/Worlds.svg" alt="" />Spaces</div>
+      <div id="transform-button"><img id="transform-icon" src="assets/icons/Transform.svg" alt="" />Transform</div>
+      <div id="share-button"><img id="share-icon" src="assets/icons/Share.svg" alt="" />Share</div>
+    </div>
 
     <div id="item-overlay">
       <div id="item-desc">
         <div>Single Function Handshower High Flow</div>
         <div>Shown in Brushed Nickel</div>
       </div>
-      <div id="info-button"><img class="info-icon" src="assets/icons/info-circle.svg" alt=""/><span id="info-text">  Collection</span></div>
+      <div id="info-button"><img class="info-icon" src="assets/icons/Info_Circle.svg" alt=""/><span id="info-text">Statement
+        Collection</span></div>
 
       <div id="close-button"><img class="close-icon" src="assets/icons/close-white.png" alt="" /></div>
     </div>

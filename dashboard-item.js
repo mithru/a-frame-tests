@@ -78,6 +78,7 @@ AFRAME.registerComponent('dashboard-item', {
         this.infoBtn.style.visibility = "visible"
         this.closeBtn.style.visibility = "visible"
         this.itemDesc.style.visibility = "visible"
+        this.portalOverlay.style.visibility = "hidden"
         this.camera.setAttribute('look-controls', 'enabled', false);
       }
       // el.removeAttribute('animation__reset');

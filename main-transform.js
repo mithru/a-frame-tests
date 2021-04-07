@@ -20,10 +20,9 @@ AFRAME.registerComponent('main-transform', {
         }
       }
       this.createMainSculpture = () => {
-
-        // console.log('create main sculpture');
-        // el.setAttribute('animation' , 'property: scale; delay: 1000; to: 10 10 10; easing: easeInOutQuad; loop: false; dur: 2000')
-        // this.stageArea.setAttribute('animation' , 'property: scale; delay: 1000; to: 0 0 0; easing: easeInOutQuad; loop: false; dur: 2000')
+        console.log('create main sculpture');
+        el.setAttribute('animation' , 'property: scale; delay: 1000; to: 10 10 10; easing: easeInOutQuad; loop: false; dur: 2000')
+        this.stageArea.setAttribute('animation' , 'property: scale; delay: 1000; to: 0 0 0; easing: easeInOutQuad; loop: false; dur: 2000')
         this.stageArea.visible = false;
 
         // Show initial portal UI
