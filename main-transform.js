@@ -7,6 +7,7 @@ AFRAME.registerComponent('main-transform', {
       this.stageArea = document.getElementById('main-stage')
       this.dashboardElements = document.getElementById('dashboard-content')
       this.portalOverlay = document.getElementById('portal-overlay')
+      this.portalBtm = document.getElementById('portal-btm')
 
       // el.object3D.visible = false;
       console.log('howdy');
@@ -27,6 +28,7 @@ AFRAME.registerComponent('main-transform', {
 
         // Show initial portal UI
         this.portalOverlay.style.visibility = 'visible'
+        this.portalBtm.style.visibility = 'visible'
       }
       this.mainSculptureIdle = () => {
         el.addEventListener('mouseenter', this.transition)

@@ -12,6 +12,7 @@ AFRAME.registerComponent('dashboard-item', {
     let interactable = false;
 
     this.portalOverlay = document.getElementById('portal-overlay')
+    this.portalBtm = document.getElementById('portal-btm')
     this.infoBtn = document.getElementById('info-button')
     this.closeBtn =  document.getElementById('close-button')
     this.itemDesc = document.getElementById('item-desc')
@@ -52,6 +53,10 @@ AFRAME.registerComponent('dashboard-item', {
       this.infoBtn.style.visibility = "hidden"
       this.closeBtn.style.visibility = "hidden"
       this.itemDesc.style.visibility = "hidden"
+      this.portalOverlay.style.visibility = "visible"
+      this.portalBtm.style.visibility = "visible"
+      console.log('portal bottom visible')
+
       interactable = false;
       console.log('hovered off ' + el);
       // el.removeAttribute('animation__zoomin')
@@ -79,6 +84,7 @@ AFRAME.registerComponent('dashboard-item', {
         this.closeBtn.style.visibility = "visible"
         this.itemDesc.style.visibility = "visible"
         this.portalOverlay.style.visibility = "hidden"
+        this.portalBtm.style.visibility = "hidden"
         this.camera.setAttribute('look-controls', 'enabled', false);
       }
       // el.removeAttribute('animation__reset');
