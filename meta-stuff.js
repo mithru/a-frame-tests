@@ -52,9 +52,6 @@ AFRAME.registerComponent('meta-stuff', {
           this.behindDoor.setAttribute('animation' , 'property: material.opacity; to: 0; easing: easeInOutQuad; loop: false; dur: 1000')
           this.doorFrame.setAttribute('animation' , 'property: scale; to: 5 5 5; easing: easeInOutQuad; loop: false; dur: 1000')
           this.doorShadow.setAttribute('animation' , 'property: scale; to: 5 5 5; easing: easeInOutQuad; loop: false; dur: 1000')
-
-          // @TODO move this
-          // this.camParent.setAttribute('animation' , 'property: position; delay: 3000; to: ' + this.camWorldPosition.x + ' 0 ' + this.camWorldPosition.z + '; easing: easeInOutQuad; loop: false; dur: 3000')
           this.overlay.style.visibility = "hidden"
         }
       this.showPortalElements = () => {
@@ -64,16 +61,23 @@ AFRAME.registerComponent('meta-stuff', {
         this.reverseWall.setAttribute('animation' , 'property: position; to: 0 0 10; easing: easeInOutQuad; loop: false; dur: 3000')
       }
       this.risePlatform = () => {
-        this.platform.setAttribute('animation' , 'property: position; to: 0 -2 -5; easing: easeInOutQuad; loop: false; dur: 1000')
+        this.platform.setAttribute('animation' , 'property: position; to: 0 -2 -15; easing: easeInOutQuad; loop: false; dur: 3000')
         this.behindDoor.object3D.visible = false
+        // this.behindDoor.object3D.children[0].material.depthTest = false
+        this.moveCameraIntoScene()
       }
+
+      this.moveCameraIntoScene = () => {
+        console.log('moving into the scene');
+        this.camParent.setAttribute('animation' , 'property: position; delay: 3000; to: ' + this.camWorldPosition.x + ' 0 ' + this.camWorldPosition.z + '; easing: easeInOutQuad; loop: false; dur: 3000')
+      }
+
       this.cta.addEventListener('click', this.startExperience)
       this.camParent.addEventListener('animationcomplete', this.showPortalElements)
       this.behindDoor.addEventListener('animationcomplete', this.risePlatform)
 
     },
     tick() {
-
       if(!this.positionSet){
         this.parent.object3D.rotation.y = this.camera.object3D.rotation.y;
         this.camFinal.object3D.getWorldPosition(this.camWorldPosition)

@@ -4,8 +4,9 @@ AFRAME.registerComponent('onhover-disappear', {
     init() {
       let data = this.data;
       let el = this.el;
+
       el.object3D.visible = false;
-      this.door = document.getElementById('doorset')
+      this.door = document.getElementById('hider-walls')
       this.disappearNow = () => {
         console.log(el.object3D.visible);
         if(el.object3D.visible){
