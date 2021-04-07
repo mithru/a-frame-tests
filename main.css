@@ -195,7 +195,7 @@ img {
   width: 100%;
   display: inline-flex;
   z-index: 51;
-  justify-content: space-around;
+  justify-content: space-between;
 }
 
 #spaces-button, #transform-button, #share-button {
@@ -205,6 +205,9 @@ img {
   align-items: end;
   text-align: center;
   justify-content: center;
+  margin: 1em .5em .1em;
+  padding: 1em 1em .1em;
+
 }
 
 #spaces-icon, #transform-icon, #share-icon {
