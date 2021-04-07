@@ -96,15 +96,15 @@
 
       <!-- <a-gltf-model src="#door-solid" rotation="0 180 0" material="shader: flat;  color:white"></a-gltf-model> -->
       <a-entity id="parent" position="0 -3 0">
-        <a-entity id="all-content" position="0 0 -15">
+        <a-entity id="all-content" position="0 0 -15" scale="1.5 1.5 1.5">
           <!-- Hider walls -->
           <a-entity id="hider-walls">
             <a-entity id="reverse-wall">
               <a-box id="door-container" onhover-disappear depth="0.4" height="10" width="4" position="0 5 0" material="opacity: 0"></a-box>
-              <a-entity id="door-elements">
+              <a-entity id="door-elements" >
                 <a-entity
                   position="0 0 0.5"
-                  scale="5 5 1"
+                  scale="5 5 5"
                   id="doorframe"
                   gltf-model="#door-frame"
                   cubemap-static>
@@ -121,7 +121,7 @@
                   gltf-model="#door-set"
                   hider-material>
                 </a-entity>
-                <a-plane id="behind-door" width="10" height="10" position="0 5 -.1" material="shader: flat; color:#fff; opacity: 0.8"></a-plane>
+                <a-plane id="behind-door" width="10" height="10" position="0 5 -0.1" material="shader: flat; color:#fff; opacity: 0.5"></a-plane>
               </a-entity>
               <a-plane id="hider-stage-top" width="50" height="10" position="0 15 0"  hider-material></a-plane>
               <a-plane id="hider-stage-left" width="20" height="10" position="-15 5 0"  hider-material></a-plane>
