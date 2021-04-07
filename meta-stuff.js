@@ -21,7 +21,7 @@ AFRAME.registerComponent('meta-stuff', {
       this.camFinal = document.getElementById('camFinalPos')
       // this.doorplaceholder = document.getElementById('door-placeholder')
       this.cta = document.getElementById('intro-cta')
-      this.overlay = document.getElementById('overlay')
+      this.overlay = document.getElementById('intro-overlay')
       this.dashboardElements = document.getElementById('dashboard-content')
       this.camWorldPosition = new THREE.Vector3();
       this.doorCollider = document.getElementById('door-container')

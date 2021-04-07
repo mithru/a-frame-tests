@@ -11,9 +11,10 @@ AFRAME.registerComponent('dashboard-item', {
     let el = this.el;
     let interactable = false;
 
-    let infoBtn = document.getElementById('info-button')
-    let closeBtn =  document.getElementById('close-button')
-    let itemDesc = document.getElementById('item-desc')
+    this.portalOverlay = document.getElementById('portal-overlay')
+    this.infoBtn = document.getElementById('info-button')
+    this.closeBtn =  document.getElementById('close-button')
+    this.itemDesc = document.getElementById('item-desc')
 
     this.camera = document.getElementById('camera')
     this.parent = document.getElementById('parent')
@@ -48,9 +49,9 @@ AFRAME.registerComponent('dashboard-item', {
     this.hoveredOff = () => {
       this.camera.setAttribute('look-controls', 'enabled', true);
 
-      infoBtn.style.visibility = "hidden"
-      closeBtn.style.visibility = "hidden"
-      itemDesc.style.visibility = "hidden"
+      this.infoBtn.style.visibility = "hidden"
+      this.closeBtn.style.visibility = "hidden"
+      this.itemDesc.style.visibility = "hidden"
       interactable = false;
       console.log('hovered off ' + el);
       // el.removeAttribute('animation__zoomin')
@@ -74,9 +75,9 @@ AFRAME.registerComponent('dashboard-item', {
       if(interactable){
         console.log("Load the model now...")
         // make text and ui visible
-        infoBtn.style.visibility = "visible"
-        closeBtn.style.visibility = "visible"
-        itemDesc.style.visibility = "visible"
+        this.infoBtn.style.visibility = "visible"
+        this.closeBtn.style.visibility = "visible"
+        this.itemDesc.style.visibility = "visible"
         this.camera.setAttribute('look-controls', 'enabled', false);
       }
       // el.removeAttribute('animation__reset');
@@ -86,7 +87,7 @@ AFRAME.registerComponent('dashboard-item', {
     el.addEventListener('mouseleave', this.hoveredOff)
     el.addEventListener('animationcomplete__zoomin', this.readyForMV)
     el.addEventListener('animationcomplete', this.resetRotation)
-    closeBtn.addEventListener('click', this.hoveredOff)
+    this.closeBtn.addEventListener('click', this.hoveredOff)
     this.resetRotation();
 
   }, tick(){
