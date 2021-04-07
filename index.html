@@ -46,6 +46,8 @@
         <a-asset-item id="baseModel" src="assets/glbs/base.glb"></a-asset-item>
         <a-asset-item id="desert-base" src="assets/glbs/desert/platform.glb"></a-asset-item>
         <a-asset-item id="door-set" src="assets/glbs/door_set.glb"></a-asset-item>
+        <a-asset-item id="door-frame" src="assets/glbs/door_frame.glb"></a-asset-item>
+        <a-asset-item id="door-shadow" src="assets/glbs/door_shadow.glb"></a-asset-item>
         <a-asset-item id="door-solid" src="assets/glbs/door_solid.glb"></a-asset-item>
         <a-asset-item id="configA-item1" src="assets/glbs/26299.glb"></a-asset-item>
         <a-asset-item id="configA-item2" src="assets/glbs/26296.glb"></a-asset-item>
@@ -90,27 +92,36 @@
           <a-cursor  material="color: black; shader: flat; opacity: 0.2;"></a-cursor>
         </a-camera>
       </a-entity>
+      <a-entity light="type: ambient; intensity: 1;"></a-entity>
 
-      <!-- <a-entity
-        rotation="0 180 0"
-        scale="5 5 5"
-        id="door-placeholder"
-        gltf-model="#door-solid"
-        material="shader: flat;  color:white">
-      </a-entity> -->
       <!-- <a-gltf-model src="#door-solid" rotation="0 180 0" material="shader: flat;  color:white"></a-gltf-model> -->
       <a-entity id="parent" position="0 -3 0">
-        <a-plane id="door-placeholder" material="shader: flat;  color:white; opacity: 0.2" width="6" height="12" position="0 5 -15" ></a-plane>
         <a-entity id="all-content" position="0 0 -15">
           <!-- Hider walls -->
           <a-entity id="hider-walls">
             <a-entity id="reverse-wall">
-              <a-box id="door-container" scale="1.2 1.2 1.2" onhover-disappear depth="0.4" height="10" width="4" position="0 5 0" material="opacity: 0"></a-box>
-              <a-entity
-                scale="5 5 5"
-                id="doorset"
-                gltf-model="#door-set"
-                hider-material>
+              <a-box id="door-container" onhover-disappear depth="0.4" height="10" width="4" position="0 5 0" material="opacity: 0"></a-box>
+              <a-entity id="door-elements">
+                <a-entity
+                  position="0 0 0.5"
+                  scale="5 5 1"
+                  id="doorframe"
+                  gltf-model="#door-frame"
+                  cubemap-static>
+                </a-entity>
+                <a-entity
+                  position="0 0.1 0.8"
+                  scale="5 5 0"
+                  id="doorshadow"
+                  gltf-model="#door-shadow">
+                </a-entity>
+                <a-entity
+                  scale="5 5 5"
+                  id="doorset"
+                  gltf-model="#door-set"
+                  hider-material>
+                </a-entity>
+                <a-plane id="behind-door" width="10" height="10" position="0 5 -.1" material="shader: flat; color:#fff; opacity: 0.8"></a-plane>
               </a-entity>
               <a-plane id="hider-stage-top" width="50" height="10" position="0 15 0"  hider-material></a-plane>
               <a-plane id="hider-stage-left" width="20" height="10" position="-15 5 0"  hider-material></a-plane>
@@ -124,7 +135,6 @@
               <a-plane id="hider-right" width="30" height="20" rotation="0 -90 0" position="25 10 15"  hider-material></a-plane>
             </a-entity>
           </a-entity>
-          <a-entity light="type: ambient; intensity: 1;"></a-entity>
           <a-entity id="portal-contents" position="0 0 0">
             <a-entity
               id="camFinalPos"
@@ -147,7 +157,7 @@
               id="base"
               scale="6 6 6"
               rotation="0 90 0"
-              position="0 -2 -5"
+              position="0 -22 -5"
               gltf-model="#desert-base"
               cubemap-static>
             </a-entity>

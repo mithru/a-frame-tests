@@ -19,16 +19,20 @@ AFRAME.registerComponent('meta-stuff', {
       this.parent = document.getElementById('parent')
       this.camParent = document.getElementById('cam-parent')
       this.camFinal = document.getElementById('camFinalPos')
-      this.doorplaceholder = document.getElementById('door-placeholder')
+      // this.doorplaceholder = document.getElementById('door-placeholder')
       this.cta = document.getElementById('intro-cta')
       this.overlay = document.getElementById('overlay')
       this.dashboardElements = document.getElementById('dashboard-content')
       this.camWorldPosition = new THREE.Vector3();
       this.doorCollider = document.getElementById('door-container')
+      this.behindDoor = document.getElementById('behind-door')
+      this.doorShadow = document.getElementById('doorshadow')
+      this.doorFrame = document.getElementById('doorframe')
+      this.platform = document.getElementById('base')
       this.doorCollider.object3D.visible = false
       console.log(this.doorCollider.object3D.visible);
       // this.hiderWalls.object3D.visible = false
-      this.allContent.object3D.visible = false
+      // this.allContent.object3D.visible = false
       this.positionSet = false;
 
       this.startExperience = () => {
@@ -43,10 +47,14 @@ AFRAME.registerComponent('meta-stuff', {
             duration: 1000
           });
           this.allContent.object3D.visible = true
-          this.doorplaceholder.object3D.visible = false
+          // this.doorplaceholder.object3D.visible = false
           this.camera.object3D.rotation.y -= this.camera.object3D.rotation.y;
-          this.camParent.setAttribute('animation' , 'property: position; delay: 3000; to: ' + this.camWorldPosition.x + ' 0 ' + this.camWorldPosition.z + '; easing: easeInOutQuad; loop: false; dur: 3000')
-          // this.cta.visible = true
+          this.behindDoor.setAttribute('animation' , 'property: material.opacity; to: 0; easing: easeInOutQuad; loop: false; dur: 1000')
+          this.doorFrame.setAttribute('animation' , 'property: scale; to: 5 5 5; easing: easeInOutQuad; loop: false; dur: 1000')
+          this.doorShadow.setAttribute('animation' , 'property: scale; to: 5 5 5; easing: easeInOutQuad; loop: false; dur: 1000')
+
+          // @TODO move this
+          // this.camParent.setAttribute('animation' , 'property: position; delay: 3000; to: ' + this.camWorldPosition.x + ' 0 ' + this.camWorldPosition.z + '; easing: easeInOutQuad; loop: false; dur: 3000')
           this.overlay.style.visibility = "hidden"
         }
       this.showPortalElements = () => {
@@ -55,8 +63,13 @@ AFRAME.registerComponent('meta-stuff', {
         this.envWalls.object3D.visible = false;
         this.reverseWall.setAttribute('animation' , 'property: position; to: 0 0 10; easing: easeInOutQuad; loop: false; dur: 3000')
       }
+      this.risePlatform = () => {
+        this.platform.setAttribute('animation' , 'property: position; to: 0 -2 -5; easing: easeInOutQuad; loop: false; dur: 1000')
+        this.behindDoor.object3D.visible = false
+      }
       this.cta.addEventListener('click', this.startExperience)
       this.camParent.addEventListener('animationcomplete', this.showPortalElements)
+      this.behindDoor.addEventListener('animationcomplete', this.risePlatform)
 
     },
     tick() {
