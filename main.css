@@ -201,17 +201,25 @@ img {
 #spaces-button, #transform-button, #share-button {
   display: grid;
   color: white;
-  width: min-content;
-  align-items: end;
-  text-align: center;
+  /*width: min-content;*/
+  /*align-items: end;*/
+  /*text-align: center;*/
   justify-content: center;
-  margin: 1em .5em .1em;
-  padding: 1em 1em .1em;
+  /*margin: 1em .5em .1em;*/
+  /*padding: 1em 1em .1em;*/
 
 }
 
 #spaces-icon, #transform-icon, #share-icon {
+  max-width: 50px;
+  align-items: center;
+  text-align: center;
+  justify-content: center;
+}
 
+#spaces, #transform, #share {
+  text-align: center;
+  padding: 1em;
 }
 
 #spaces-txt, #transform-txt, #share-txt {
@@ -220,8 +228,8 @@ img {
 
 #portal-container {
   /*visibility: hidden;*/
-  border-right: 50px;
-  display: inline-grid;
+  display: flex;
+  justify-content: center;
 }
 
 #portal-reform {
