@@ -297,7 +297,7 @@ img {
   right: 0vmax;
   /*background-color:white;*/
   position: absolute;
-  margin: 50px;
+  margin: 40px;
   width:2em;
   height:2em;
 }
@@ -306,7 +306,7 @@ img {
   height: 100%;
   width: 100%;
   display: block;
-  background-color: black;
-  border-radius: 50px;
+  /*background-color: black;*/
+  /*border-radius: 50px;*/
   z-index: 50;
 }
