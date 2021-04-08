@@ -218,6 +218,24 @@ img {
   padding-top: .5em;
 }
 
+#portal-container {
+  /*visibility: hidden;*/
+  border-right: 50px;
+  display: inline-grid;
+}
+
+#portal-reform {
+  visibility: hidden;
+  bottom: 2vmax;
+  position: absolute;
+  width: 100%;
+  text-align: center;
+  /*display: flex;*/
+}
+#reform-icon {
+  height: 40px;
+
+}
 #item-overlay {
 /*background-color:rgba(0,0,0,0.2);*/
   /*position: absolute;*/
@@ -240,7 +258,7 @@ img {
   /*height: 100%;*/
   bottom: 5vmax;
   font-family: 'Playfair Display', serif;
-  font-size: x-large;
+  font-size: medium;
   color: white;
   /*z-index: 50;*/
 }

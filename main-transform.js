@@ -8,6 +8,7 @@ AFRAME.registerComponent('main-transform', {
       this.dashboardElements = document.getElementById('dashboard-content')
       this.portalOverlay = document.getElementById('portal-overlay')
       this.portalBtm = document.getElementById('portal-btm')
+      // this.portalReform = document.getElementById('portal-reform')
 
       // el.object3D.visible = false;
       console.log('howdy');
@@ -18,6 +19,7 @@ AFRAME.registerComponent('main-transform', {
           console.log('yoamn');
           el.setAttribute('animation' , 'property: scale; delay: 1000; to: 0 0 0; easing: easeInOutQuad; loop: false; dur: 2000')
           this.dashboardElements.setAttribute('animation' , 'property: scale; delay: 1000; to: 1 1 1; easing: easeInOutQuad; loop: false; dur: 2000')
+          this.portalBtm.style.visibility = 'hidden'
         }
       }
       this.createMainSculpture = () => {
@@ -25,17 +27,14 @@ AFRAME.registerComponent('main-transform', {
         el.setAttribute('animation' , 'property: scale; delay: 1000; to: 10 10 10; easing: easeInOutQuad; loop: false; dur: 2000')
         this.stageArea.setAttribute('animation' , 'property: scale; delay: 1000; to: 0 0 0; easing: easeInOutQuad; loop: false; dur: 2000')
         this.stageArea.visible = false;
-
-        // Show initial portal UI
-        this.portalOverlay.style.visibility = 'visible'
-        this.portalBtm.style.visibility = 'visible'
       }
       this.mainSculptureIdle = () => {
         el.addEventListener('mouseenter', this.transition)
         console.log('main sculpture idle');
+        // Show initial portal UI
+        this.portalBtm.style.visibility = 'visible'
       }
 
-      // reform
       // el.setAttribute('animation' , 'property: scale; delay: 1000; to: 0 0 0; easing: easeInOutQuad; loop: false; dur: 2000')
       // this.dashboardElements.setAttribute('animation' , 'property: scale; delay: 1000; to: 1 1 1; easing: easeInOutQuad; loop: false; dur: 2000')
 

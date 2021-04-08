@@ -13,6 +13,7 @@ AFRAME.registerComponent('dashboard-item', {
 
     this.portalOverlay = document.getElementById('portal-overlay')
     this.portalBtm = document.getElementById('portal-btm')
+    this.portalReform = document.getElementById('portal-reform')
     this.infoBtn = document.getElementById('info-button')
     this.closeBtn =  document.getElementById('close-button')
     this.itemDesc = document.getElementById('item-desc')
@@ -46,6 +47,10 @@ AFRAME.registerComponent('dashboard-item', {
       el.setAttribute('animation__zoomin', 'property: scale; to: ' + endScaleString + '; easing: easeInOutSine; dur: 5000')
       // el.removeAttribute('animation')
       // el.setAttribute('animation', 'property: rotation; to: ' + startRotString + '; easing: linear; dur: 1500; loop: false')
+
+      // show portal overlay & reform button
+      this.portalOverlay.style.visibility = "visible"
+      this.portalReform.style.visibility = "visible"
     }
     this.hoveredOff = () => {
       this.camera.setAttribute('look-controls', 'enabled', true);
@@ -53,9 +58,10 @@ AFRAME.registerComponent('dashboard-item', {
       this.infoBtn.style.visibility = "hidden"
       this.closeBtn.style.visibility = "hidden"
       this.itemDesc.style.visibility = "hidden"
-      this.portalOverlay.style.visibility = "visible"
-      this.portalBtm.style.visibility = "visible"
-      console.log('portal bottom visible')
+      this.portalOverlay.style.visibility = "hidden"
+      this.portalReform.style.visibility = "hidden"
+      // this.portalBtm.style.visibility = "visible"
+      // console.log('portal bottom visible')
 
       interactable = false;
       console.log('hovered off ' + el);
@@ -79,12 +85,15 @@ AFRAME.registerComponent('dashboard-item', {
     this.readyForMV = () => {
       if(interactable){
         console.log("Load the model now...")
+        // show reform button
+        this.portalReform.style.visibility = "visible"
         // make text and ui visible
         this.infoBtn.style.visibility = "visible"
         this.closeBtn.style.visibility = "visible"
         this.itemDesc.style.visibility = "visible"
         this.portalOverlay.style.visibility = "hidden"
         this.portalBtm.style.visibility = "hidden"
+        this.portalReform.style.visibility = "hidden"
         this.camera.setAttribute('look-controls', 'enabled', false);
       }
       // el.removeAttribute('animation__reset');
