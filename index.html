@@ -35,7 +35,7 @@
     <a-scene
       loading-screen="dotsColor: white; backgroundColor: black; enabled: false"
       renderer="antialias: true; colorManagement: true; physicallyCorrectLights: true;"
-      debug-custom="visible: true"
+      debug-custom="visible: false"
       meta-stuff
       vr-mode-ui="enabled: false">
       <a-assets>
@@ -92,7 +92,7 @@
       <!-- look-controls="reverseMouseDrag:true; touchEnabled: false" -->
       <a-entity id="cam-parent" position="0 0 0">
         <a-camera id="camera" position="0 4 0"  look-controls="touchEnabled: true" >
-          <a-cursor  material="color: black; shader: flat; opacity: 0.0;"></a-cursor>
+          <a-cursor  scale="0 0 0"></a-cursor>
         </a-camera>
       </a-entity>
       <a-entity light="type: ambient; intensity: 1;"></a-entity>
@@ -124,7 +124,8 @@
                   gltf-model="#door-set"
                   hider-material>
                 </a-entity>
-                <a-plane id="behind-door" width="10" height="10" position="0 5 -0.1" material="shader: flat; color:#fff; opacity: 0.5"></a-plane>
+                <!-- <a-plane id="behind-door" width="10" height="10" position="0 5 -0.1" material="shader: flat; color:#fff; opacity: 0.5"></a-plane> -->
+                <a-plane id="behind-door" scale="0 0 0"></a-plane>
               </a-entity>
               <a-plane id="hider-stage-top" width="50" height="10" position="0 15 0"  hider-material></a-plane>
               <a-plane id="hider-stage-left" width="20" height="10" position="-15 5 0"  hider-material></a-plane>
@@ -158,9 +159,9 @@
             </a-entity>
             <a-entity
               id="base"
-              scale="12 12 12"
+              scale="32 32 32"
               rotation="0 90 0"
-              position="0 -22 -15"
+              position="0 -7 -35"
               gltf-model="#desert-base"
               cubemap-static>
             </a-entity>
