@@ -42,7 +42,7 @@ AFRAME.registerComponent('dashboard-item', {
     const endScaleString = (startScale.x*3) + ' ' + (startScale.y*3) + ' ' + (startScale.z*3)
 
     this.hoveredOn = () => {
-      console.log('hovered on ' + el.object3D);
+      // console.log('hovered on ' + el);
       interactable = true;
       el.setAttribute('animation__zoomin', 'property: scale; to: ' + endScaleString + '; easing: easeInOutSine; dur: 5000')
       // el.removeAttribute('animation')
@@ -53,8 +53,9 @@ AFRAME.registerComponent('dashboard-item', {
       this.portalReform.style.visibility = "visible"
     }
     this.hoveredOff = () => {
+      console.log('remove drag-rotate-component: ' + el.getAttribute('id'))
+      el.removeAttribute('drag-rotate-component')
       this.camera.setAttribute('look-controls', 'enabled', true);
-
       this.infoBtn.style.visibility = "hidden"
       this.closeBtn.style.visibility = "hidden"
       this.itemDesc.style.visibility = "hidden"
@@ -64,7 +65,7 @@ AFRAME.registerComponent('dashboard-item', {
       // console.log('portal bottom visible')
 
       interactable = false;
-      console.log('hovered off ' + el);
+      // console.log('hovered off ' + el);
       // el.removeAttribute('animation__zoomin')
       el.setAttribute('animation__zoomin', 'property: scale; to: '+ startScaleString +'; easing: easeInOutSine; dur: 1500')
       // el.setAttribute('animation', 'property: rotation; to: ' + endRotString + '; easing: linear; dur: 30000')
@@ -95,6 +96,18 @@ AFRAME.registerComponent('dashboard-item', {
         this.portalBtm.style.visibility = "hidden"
         this.portalReform.style.visibility = "hidden"
         this.camera.setAttribute('look-controls', 'enabled', false);
+
+        // remove autorotate, add drag rotation to all models except main sculpture
+        if (el.getAttribute('id') != 'configA0') {
+          // disable autorotate
+          // el.setAttribute('dashboard-item','autoRotate:false')
+          el.removeAttribute('animation')
+          console.log(el.getAttribute('id'));
+          // allow drag rotation
+          el.setAttribute('drag-rotate-component','')
+          console.log('add drag-rotate-component')
+        }
+
       }
       // el.removeAttribute('animation__reset');
       // el.setAttribute('animation__rotation', 'property: rotation; from: 0 0 0; to: 0 360 0; easing: linear; dur: 30000; loop: true')

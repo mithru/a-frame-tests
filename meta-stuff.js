@@ -31,7 +31,7 @@ AFRAME.registerComponent('meta-stuff', {
       this.doorFrame = document.getElementById('doorframe')
       this.platform = document.getElementById('base')
       this.doorCollider.object3D.visible = false
-      console.log(this.doorCollider.object3D.visible);
+      // console.log(this.doorCollider.object3D.visible);
       // this.hiderWalls.object3D.visible = false
       // this.allContent.object3D.visible = false
       this.positionSet = false;

@@ -1,8 +1,8 @@
 function runVideo(){
   video = document.querySelector("#videoElement");
-  console.log(video)
+  // console.log(video)
   if (navigator.mediaDevices.getUserMedia) {
-    console.log(video)
+    // console.log(video)
     const videoConstraints = {};
     videoConstraints.facingMode = 'environment';
     const constraints = {

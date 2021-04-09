@@ -1,6 +1,6 @@
 
 window.addEventListener('DOMContentLoaded', (event) => {
-    console.log('DOM fully loaded and parsed');
+    // console.log('DOM fully loaded and parsed');
     let pgmrk1 = document.getElementById('li-1');
     let pgmrk2 = document.getElementById('li-2');
     let pgmrk3 = document.getElementById('li-3');

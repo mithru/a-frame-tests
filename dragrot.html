@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://aframe.io/releases/0.4.0/aframe.min.js"></script>
+    <script src="drag-rotate-component.js"></script>
+</head>
+<body>
+
+    <a-scene>
+      <a-box id="b1" color="green" position="2 2 -3" drag-rotate-component></a-box>
+      <a-box id="b2" color="blue" position="-2 2 -3"></a-box>
+      <a-camera position="0 0 0" look-controls="enabled:false">
+        <a-cursor></a-cursor>
+      </a-camera>
+    </a-scene>
+
+</body>
+</html>
