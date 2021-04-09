@@ -24,6 +24,8 @@ AFRAME.registerComponent('main-transform', {
         console.log('showTitle')
         this.title1.style.visibility = 'visible'
         this.title1.classList.add('fade-in')
+        // show top left audio, recalib, cc butons
+        this.portalOverlay.style.visibility = "visible"
       }
 
       this.createMainSculpture = () => {
@@ -38,8 +40,8 @@ AFRAME.registerComponent('main-transform', {
 
         // Show initial portal UI
         // this.portalOverlay.style.visibility = "visible"
-        // this.portalBtm.style.alignItems = 'center'
-        // this.portalBtm.style.visibility = 'visible'
+        this.portalBtm.style.alignItems = 'center'
+        this.portalBtm.style.visibility = 'visible'
       }
 
       // el.setAttribute('animation' , 'property: scale; delay: 1000; to: 0 0 0; easing: easeInOutQuad; loop: false; dur: 2000')
