@@ -37,7 +37,9 @@ AFRAME.registerComponent('meta-stuff', {
       this.positionSet = false;
 
       this.startExperience = () => {
-        console.log("start");
+        console.log("enter door, start experience");
+
+
         this.positionSet = true
         this.camParent.setAttribute('animation' , 'property: position; delay: 3000; to: ' + this.camWorldPosition.x + ' 0 ' + this.camWorldPosition.z + '; easing: easeInOutQuad; loop: false; delay:5000; dur: 3000')
 
@@ -58,6 +60,7 @@ AFRAME.registerComponent('meta-stuff', {
           this.overlay.style.visibility = "hidden"
         }
       this.showPortalElements = () => {
+        console.log('showPortalElements')
         this.doorCollider.object3D.visible = true
         this.dashboardElements.object3D.visible = true
         this.envWalls.object3D.visible = false;
@@ -71,7 +74,7 @@ AFRAME.registerComponent('meta-stuff', {
       }
 
       this.moveCameraIntoScene = () => {
-        console.log('moving into the scene');
+        document.getElementById('title-1').style.visibility = 'visible'
         // this.camParent.setAttribute('animation' , 'property: position; delay: 3000; to: ' + this.camWorldPosition.x + ' 0 ' + this.camWorldPosition.z + '; easing: easeInOutQuad; loop: false; dur: 3000')
       }
       this.doorClicked = () => {

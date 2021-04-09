@@ -49,7 +49,7 @@ AFRAME.registerComponent('dashboard-item', {
       // el.setAttribute('animation', 'property: rotation; to: ' + startRotString + '; easing: linear; dur: 1500; loop: false')
 
       // show portal overlay & reform button
-      this.portalOverlay.style.visibility = "visible"
+      // this.portalOverlay.style.visibility = "visible"
       this.portalReform.style.visibility = "visible"
     }
     this.hoveredOff = () => {
@@ -59,7 +59,7 @@ AFRAME.registerComponent('dashboard-item', {
       this.infoBtn.style.visibility = "hidden"
       this.closeBtn.style.visibility = "hidden"
       this.itemDesc.style.visibility = "hidden"
-      this.portalOverlay.style.visibility = "hidden"
+      // this.portalOverlay.style.visibility = "hidden"
       this.portalReform.style.visibility = "hidden"
       // this.portalBtm.style.visibility = "visible"
       // console.log('portal bottom visible')
