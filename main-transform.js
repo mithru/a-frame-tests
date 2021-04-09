@@ -7,9 +7,11 @@ AFRAME.registerComponent('main-transform', {
       this.stageArea = document.getElementById('main-stage')
       this.dashboardElements = document.getElementById('dashboard-content')
       this.portalOverlay = document.getElementById('portal-overlay')
+      this.portalReform = document.getElementById('portal-reform')
       this.portalBtm = document.getElementById('portal-btm')
       this.title1 = document.getElementById('title-1')
       this.title2 = document.getElementById('title-2')
+      this.toptext = document.getElementById('portal-top-text')
 
       this.transition = () => {
         console.log('Main transform transition: ' + el.object3D.visible);
@@ -17,8 +19,16 @@ AFRAME.registerComponent('main-transform', {
           el.setAttribute('animation' , 'property: scale; delay: 1000; to: 0 0 0; easing: easeInOutQuad; loop: false; dur: 2000')
           this.dashboardElements.setAttribute('animation' , 'property: scale; delay: 1000; to: 1 1 1; easing: easeInOutQuad; loop: false; dur: 2000')
           this.portalBtm.style.visibility = 'hidden'
+          this.toptext.style.visibility = 'hidden'
+
+          this.portalReform.style.visibility = 'visible'
         }
       }
+
+      // TODO
+      // add click listener for Reform button
+      // createMainSculpture
+      // this.portalReform.addEventListener('click', )
 
       this.showTitle = () => {
         console.log('showTitle')
@@ -36,12 +46,15 @@ AFRAME.registerComponent('main-transform', {
       }
       this.mainSculptureIdle = () => {
         el.addEventListener('mouseenter', this.transition)
+        // listen for reform click
+        // el.addEventListener('click', )
         console.log('main sculpture idle');
 
         // Show initial portal UI
         // this.portalOverlay.style.visibility = "visible"
         this.portalBtm.style.alignItems = 'center'
         this.portalBtm.style.visibility = 'visible'
+        this.toptext.style.visibility = 'visible'
       }
 
       // el.setAttribute('animation' , 'property: scale; delay: 1000; to: 0 0 0; easing: easeInOutQuad; loop: false; dur: 2000')

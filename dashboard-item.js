@@ -60,7 +60,7 @@ AFRAME.registerComponent('dashboard-item', {
       this.closeBtn.style.visibility = "hidden"
       this.itemDesc.style.visibility = "hidden"
       // this.portalOverlay.style.visibility = "hidden"
-      this.portalReform.style.visibility = "hidden"
+      // this.portalReform.style.visibility = "hidden"
       // this.portalBtm.style.visibility = "visible"
       // console.log('portal bottom visible')
 
@@ -87,7 +87,7 @@ AFRAME.registerComponent('dashboard-item', {
       if(interactable){
         console.log("Load the model now...")
         // show reform button
-        this.portalReform.style.visibility = "visible"
+        // this.portalReform.style.visibility = "visible"
         // make text and ui visible
         this.infoBtn.style.visibility = "visible"
         this.closeBtn.style.visibility = "visible"
