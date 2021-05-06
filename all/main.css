@@ -291,7 +291,7 @@ body {
   position: absolute;
   width: 100%;
   height: 20%;
-  bottom: 0vh;
+  bottom: 0.5vh;
   align-items: center;
   justify-content: center;
   text-align: center;

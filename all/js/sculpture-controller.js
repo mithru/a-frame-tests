@@ -328,12 +328,6 @@ AFRAME.registerComponent('sculpture-controller', {
       document.getElementById('portal-reform').style.animationName = 'fadein'
       document.getElementById('portal-reform').style.animationDuration = '0.5s'
       document.getElementById('portal-reform').style.animationFillMode = 'forwards'
-      sculptureParent.setAttribute('animation__scale', 'property: scale; to: 1 1 1; easing: easeInOutQuad; loop: false; delay:0; dur: 1000')
-      sculptureParent.setAttribute('animation__pos', 'property: position; to: 0 0 -20; easing: easeInOutQuad; loop: false; delay:0; dur: 1000')
-      sculptureParent.setAttribute('animation__rot', 'property: rotation; to: 0 15 0; easing: easeInOutQuad; loop: false; delay:0; dur: 1000')
-      setTimeout(() => {
-        sculptureParent.setAttribute('animation__rot', 'property: rotation; dir:alternate; from: 0 15 0; to: 0 45 0; easing: easeInOutQuad; loop: true; delay:0; dur: 5000;')
-      }, 1200)
 
       document.getElementById('item-overlay').style.animationName = 'fadeout'
       document.getElementById('item-overlay').style.animationFillMode = 'forwards'

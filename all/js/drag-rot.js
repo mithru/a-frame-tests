@@ -28,12 +28,6 @@ AFRAME.registerComponent('drag-rotate-component', {
     document.getElementById('item2').object3D.visible = false;
     document.getElementById('item3').object3D.visible = false;
     document.getElementById('item4').object3D.visible = false;
-
-    document.getElementById('collider-item1').setAttribute('scale', '0 0 0')
-    document.getElementById('collider-item2').setAttribute('scale', '0 0 0')
-    document.getElementById('collider-item3').setAttribute('scale', '0 0 0')
-    document.getElementById('collider-item4').setAttribute('scale', '0 0 0')
-    document.getElementById('sculpture-collider-2').setAttribute('scale', '0 0 0')
     el.object3D.visible = true;
     this.ifMouseDown = false
     this.scaling = false
@@ -76,13 +70,9 @@ AFRAME.registerComponent('drag-rotate-component', {
       console.log(this.el.object3D.position)
 
       var scaleVal = (Math.min(Math.max(parseFloat(dist), 80), 300)) / 120.0;
-      if (this.data.xRotAllowed) {
-        this.el.object3D.scale.x = scaleVal
-        this.el.object3D.scale.y = scaleVal
-        this.el.object3D.scale.z = scaleVal
-      } else {
-        this.el.object3D.position.z = -11 + scaleVal
-      }
+      this.el.object3D.scale.x = scaleVal
+      this.el.object3D.scale.y = scaleVal
+      this.el.object3D.scale.z = scaleVal
     } else {
       console.log('moving 1');
       if (this.ifMouseDown && this.data.active) {
@@ -90,9 +80,9 @@ AFRAME.registerComponent('drag-rotate-component', {
 
         var tempX = event.touches[0].pageX - this.x_cord
         var tempY = event.touches[0].pageY - this.y_cord
-        // document.getElementById('debug-text').innerHTML = `${event.clientX} , ${event.clientY} - ${this.x_cord}, ${this.y_cord} : ${tempX}, ${tempY}`
+        document.getElementById('debug-text').innerHTML = `${event.clientX} , ${event.clientY} - ${this.x_cord}, ${this.y_cord} : ${tempX}, ${tempY}`
 
-
+/*
         if (Math.abs(tempY) < Math.abs(tempX)) {
           this.el.object3D.rotateY((tempX * this.data.speed) / 1000)
         } else {
@@ -102,9 +92,10 @@ AFRAME.registerComponent('drag-rotate-component', {
         }
         this.x_cord = event.clientX
         this.y_cord = event.clientY
-        /*
+*/
         if (Math.abs(tempY) < Math.abs(tempX)) {
           console.log("moving X");
+
           if (this.data.xRotAllowed) {
             tempX = event.touches[0].pageX - this.x_cord
             console.log((tempX));
@@ -118,8 +109,10 @@ AFRAME.registerComponent('drag-rotate-component', {
             }
           }
           this.el.object3D.rotateY((tempX * this.data.speed) / 1000)
+
         } else {
           console.log("moving y");
+
           if (this.el.object3D.rotation.y < -0.2) {
             this.el.object3D.rotation.y = -0.2
           } else if (this.el.object3D.rotation.y > 1.3) {
@@ -131,7 +124,6 @@ AFRAME.registerComponent('drag-rotate-component', {
         }
         this.x_cord = event.touches[0].pageX
         this.y_cord = event.touches[0].pageY
-        */
       }
     }
   },
@@ -147,9 +139,9 @@ AFRAME.registerComponent('drag-rotate-component', {
     const model = el.object3DMap.mesh
 
     document.getElementById('skyElBlur').setAttribute('animation__fade', `property: opacity; to: 0; easing: easeInOutSine; dur: 200;`)
-    document.removeEventListener('touchstart', this.OnDocumentMouseDown.bind(this))
-    document.removeEventListener('touchend', this.OnDocumentMouseUp.bind(this))
-    document.removeEventListener('touchsmove', this.OnDocumentMouseMove.bind(this))
+    document.removeEventListener('touchstart', this.OnDocumentMouseDown.bind(el))
+    document.removeEventListener('touchend', this.OnDocumentMouseUp.bind(el))
+    document.removeEventListener('touchsmove', this.OnDocumentMouseMove.bind(el))
     setTimeout(() => {
       document.getElementById('all-walls').object3D.visible = true;
       document.getElementById('floor').object3D.visible = true;
@@ -159,13 +151,6 @@ AFRAME.registerComponent('drag-rotate-component', {
       document.getElementById('item2').object3D.visible = true;
       document.getElementById('item3').object3D.visible = true;
       document.getElementById('item4').object3D.visible = true;
-      document.getElementById('collider-item1').setAttribute('scale', '1 1 1')
-      document.getElementById('collider-item2').setAttribute('scale', '1 1 1')
-      document.getElementById('collider-item3').setAttribute('scale', '1 1 1')
-      document.getElementById('collider-item4').setAttribute('scale', '1 1 1')
-      document.getElementById('sculpture-collider-2').setAttribute('scale', '1 1 1')
-
-
     }, 100);
     // if (this.data.xRotAllowed) {
     //   bgModel.renderOrder = 0;
