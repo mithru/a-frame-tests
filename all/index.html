@@ -1,0 +1,44 @@
+<!doctype html>
+<html>
+
+<head>
+  <meta content="text/html;charset=utf-8" http-equiv="Content-Type">
+  <meta content="utf-8" http-equiv="encoding">
+
+  <title>Studio Kohler - Virtual Experience</title>
+  <script>
+    /* This implements the actual redirection. */
+    var redirectBrowser = function(site) {
+      var uri = "" + site;
+      window.location = uri;
+    };
+
+    var defaultSite = "https://www.us.kohler.com/us/";
+    var chineseSite = "https://www.kohler.com.cn/";
+
+    fetch('https://extreme-ip-lookup.com/json/')
+      .then(res => res.json())
+      .then(response => {
+        code =  response.countryCode
+        console.log("Country: ", response.countryCode);
+        if (code.localeCompare('CN') === 0) {
+          console.log("Redirecting to Chinese site");
+          redirectBrowser(chineseSite);
+        } else {
+          console.log("Redirecting to Global site");
+          redirectBrowser(defaultSite);
+        }
+      })
+      .catch((data, status) => {
+        console.log('Request failed');
+        redirectBrowser("https://hugeinc.com/");
+
+      })
+  </script>
+</head>
+
+<body>
+  <p>Redirecting...</p>
+</body>
+
+</html>
